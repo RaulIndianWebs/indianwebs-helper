@@ -6,5 +6,5 @@
 ?>
 
 <div id="iw-to-top-link" class="preset-1">
-    <img src="<?php echo esc_url( get_plugin_url() . 'assets/img/icons/to-top.png' ); ?>" alt="Volver arriba">
+    <img src="<?php echo esc_url( $icon_url ); ?>" alt="Volver arriba">
 </div>
