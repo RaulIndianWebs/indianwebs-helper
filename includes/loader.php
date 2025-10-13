@@ -7,7 +7,7 @@ foreach (array(
         "front",
         "integrations",
     ) as $plugin_branch) {
-        $file = __DIR__."/".$plugin_branch."/manager.php";
+        $file = __DIR__."/helper-branches/".$plugin_branch."/manager.php";
         if (file_exists($file)): require_once $file; endif;
 }
 
