@@ -16,7 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Iniciar Loader
-add_action('plugins_loaded', ['IW_Helper_Loader', 'init']);
+add_action('plugins_loaded', "iw_helper_load");
+
+function iw_helper_load() {
+    require_once __DIR__."/loader.php";
+}
 
 
 
