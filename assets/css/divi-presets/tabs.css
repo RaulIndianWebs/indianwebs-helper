@@ -1,0 +1,45 @@
+.et_pb_tabs.iw-preset-1 {
+	border: none !important;
+}
+
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: flex-start;
+	border: none !important;
+	background-color: transparent !important;
+}
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls li {
+	display: block;
+	margin: 0 20px;
+	border: none !important;
+}
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls a {
+	display: block;
+	position: relative;
+	color: black !important;
+}
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls a::after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 3px;
+	border-radius: 2px;
+	position: absolute;
+	bottom: -2px;
+	left: 50%;
+	background-color: var(--iw-general-color-featured);
+	transition: .3s;
+}
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls li.et_pb_tab_active a,
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls a:hover {
+	color: var(--iw-general-color-featured) !important;
+	text-decoration: none !important;
+}
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls li.et_pb_tab_active a::after,
+.et_pb_tabs.iw-preset-1 .et_pb_tabs_controls a:hover::after {
+	width: 110%;
+	left: -5%;
+	transition: .3s;
+}

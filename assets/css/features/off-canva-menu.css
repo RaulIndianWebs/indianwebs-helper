@@ -1,0 +1,145 @@
+:root {
+	--iw-off-canva-menu-primary: #fff;
+	--iw-off-canva-menu-secondary: var(--iw-general-background-color-secondary);
+	--iw-off-canva-menu-featured: var(--iw-general-color-featured);
+}
+
+#iw-off-canvas-menu {
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	z-index: 99999999;
+	background-color: rgba(0,0,0,.5);
+	display: none;
+	transition: .8s;
+}
+#iw-off-canvas-menu.iw-hidden {
+	opacity: 0;
+	transition: .8s;
+}
+#iw-off-canvas-menu.iw-shown {
+	opacity: 1;
+	transition: .8s;
+}
+
+
+#iw-off-canvas-menu .overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	transition: .8s;
+}
+#iw-off-canvas-menu.iw-shown .overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 1;
+	transition: .8s;
+}
+
+
+#iw-off-canvas-menu > .menu-container {
+	width: 500px;
+	max-width: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	background-color: var(--iw-off-canva-menu-primary);
+	padding: 20px 50px;
+	transition: .8s;
+}
+#iw-off-canvas-menu.iw-shown > .menu-container {
+	right: 0;
+	transition: .8s;
+}
+#iw-off-canvas-menu.iw-hidden > .menu-container {
+	right: -100%;
+	transition: .8s;
+}
+
+
+#iw-off-canvas-menu > .menu-container .menu-header,
+#iw-off-canvas-menu > .menu-container nav  {
+	padding-bottom: 45px;
+}
+#iw-off-canvas-menu > .menu-container .menu-header .iw-offcanvas-menu-close {
+	font-size: 35px;
+}
+
+#iw-off-canvas-menu > .menu-container nav ul li {
+	list-style: none !important;
+}
+#iw-off-canvas-menu > .menu-container nav ul {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+#iw-off-canvas-menu > .menu-container nav ul li a {
+	display: block;
+	padding: 15px;
+	font-size: 22px;
+	border-style: solid;
+	border-color: var(--iw-off-canva-menu-featured);
+	border-width: 1px 1px 0;
+	color: #4d5d5a;
+	transition: .3s;
+}
+#iw-off-canvas-menu > .menu-container nav ul li a:hover,
+#iw-off-canvas-menu > .menu-container nav ul li.current-menu-item > a {
+	background-color: var(--iw-off-canva-menu-secondary);
+	opacity: 1;
+	transition: .3s;
+}
+#iw-off-canvas-menu > .menu-container nav ul li:last-of-type a {
+	border-bottom-width: 1px;
+}
+
+#iw-off-canvas-menu > .menu-container {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+#iw-off-canvas-menu > .menu-container > *:not(.off-canvas-nav) {
+	flex-grow: 0;
+	/*height: 10vh;*/
+}
+#iw-off-canvas-menu > .menu-container > .menu-content {
+	flex-grow: 1;
+	overflow: auto;
+}
+#iw-off-canvas-menu > .menu-container > .menu-footer {
+	padding: 10px;
+}
+#iw-off-canvas-menu > .menu-container > .menu-footer > .fast-actions {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+#iw-off-canvas-menu > .menu-container > .menu-footer > .fast-actions li {
+	flex: 1;
+}
+#iw-off-canvas-menu > .menu-container > .menu-footer > .fast-actions a {
+	display: block;
+	width: 100%;
+	text-align: center;
+	color: #4d5d5a;
+	transition: .3s;
+}
+#iw-off-canvas-menu > .menu-container > .menu-footer > .fast-actions a:hover {
+	color: #1e73be;
+	transition: .3s;
+}
+
+.iw-offcanvas-menu-toggle,
+.iw-offcanvas-menu-close,
+.iw-offcanvas-menu-open {
+	cursor: pointer;
+}
+

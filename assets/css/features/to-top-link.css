@@ -1,0 +1,20 @@
+:root {
+	--iw-to-top-link-top: initial;
+	--iw-to-top-link-right: 20px;
+	--iw-to-top-link-bottom: 20px;
+	--iw-to-top-link-left: initial;
+
+	--iw-to-top-link-container-size: 45px;
+
+	--iw-to-top-link-color: var(--iw-general-color-featured);
+	--iw-to-top-link-background-color: var(--iw-general-background-color-secondary);
+}
+
+#iw-to-top-link {
+	cursor: pointer;
+	user-select: none;
+	position: fixed;
+	bottom: var(--iw-to-top-link-bottom);
+	right: var(--iw-to-top-link-right);
+	z-index: 20;
+}

@@ -1,0 +1,330 @@
+:root {
+	/* General */
+	--iw-form-border-color-initial: var(--iw-general-color-primary);
+	--iw-form-border-color-featured: var(--iw-general-color-featured);
+
+	--iw-form-label-color: black;
+	--iw-form-label-background-color: transparent;
+
+	--iw-form-input-color: black;
+	--iw-form-input-background-color: white;
+
+	--iw-form-checkbox-color: var(--iw-general-color-featured);
+
+	--iw-form-button-primary-color: var(--iw-general-color-secondary);
+	--iw-form-button-secondary-color: var(--iw-general-color-featured);
+	--iw-form-button-border-color: var(--iw-general-color-featured);
+
+	--iw-form-transitions: var(--iw-general-transitions);
+
+	/* Contact Form 7 */
+	--iw-cf7-border-color-initial: var(--iw-form-border-color-initial);
+	--iw-cf7-border-color-featured: var(--iw-form-border-color-featured);
+
+	--iw-cf7-input-color: var(--iw-form-input-color);
+	--iw-cf7-input-background-color: var(--iw-form-input-background-color);
+
+	--iw-cf7-checkbox-color: var(--iw-form-checkbox-color);
+
+	--iw-cf7-button-primary-color: var(--iw-form-button-primary-color);
+	--iw-cf7-button-secondary-color: var(--iw-form-button-secondary-color);
+	--iw-cf7-button-border-color: var(--iw-form-button-border-color);
+
+	--iw-cf7-transitions: var(--iw-form-transitions);
+
+	/* WooCommerce */
+	--iw-woo-form-border-color-initial: var(--iw-form-border-color-initial);
+	--iw-woo-form-border-color-featured: var(--iw-form-border-color-featured);
+
+	--iw-woo-form-label-color: var(--iw-form-label-color);
+	--iw-woo-form-label-background-color: var(--iw-form-label-background-color);
+
+	--iw-woo-form-input-color: var(--iw-form-input-color);
+	--iw-woo-form-input-background-color: var(--iw-form-input-background-color);
+
+	--iw-woo-form-checkbox-color: var(--iw-form-checkbox-color);
+
+	--iw-woo-form-button-primary-color: var(--iw-form-button-primary-color);
+	--iw-woo-form-button-secondary-color: var(--iw-form-button-secondary-color);
+
+	--iw-woo-form-transitions: var(--iw-form-transitions);
+}
+
+
+/* Contact Form 7 */
+.wpcf7-form {
+
+}
+.wpcf7-form[data-status="sent"] > *:not(.wpcf7-response-output) {
+	display: none;
+}
+.wpcf7-form > fieldset {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	margin-bottom: 50px;
+}
+.wpcf7-form > fieldset.hidden {
+	display: none;
+}
+.wpcf7-form > fieldset > legend {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.3em;
+}
+.wpcf7-form > fieldset > div {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+.wpcf7-form > fieldset > div > p {
+	width: 350px;
+	max-width: 100%;
+	flex-grow: 1;
+	margin: 2%;
+	padding-bottom: 0;
+}
+.wpcf7-form > fieldset > div > p:first-of-type {
+	margin-left: 0;
+}
+.wpcf7-form > fieldset > div > p:last-of-type {
+	margin-right: 0;
+}
+@media (max-width: 920px) {
+	.wpcf7-form > fieldset > div > p {
+		margin: 2% 0;
+	}
+}
+
+
+/* Overide CF7 */
+.wpcf7-form br {
+	display: none;
+}
+.wpcf7-form label {
+	user-select: none;
+	cursor: pointer;
+}
+.wpcf7-form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]),
+.wpcf7-form select,
+.wpcf7-form textarea {
+	width: 100%;
+	min-height: 40px;
+	border: 1px solid var(--iw-cf7-border-color-initial);
+	padding: 10px;
+	color: var(--iw-cf7-input-color);
+	background-color: var(--iw-cf7-input-background-color);
+	transition: var(--iw-cf7-transitions);
+}
+.wpcf7-form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):hover,
+.wpcf7-form select:hover,
+.wpcf7-form textarea:hover,
+.wpcf7-form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):focus,
+.wpcf7-form select:focus,
+.wpcf7-form textarea:focus {
+	border-color: var(--iw-cf7-border-color-featured);
+	transition: var(--iw-cf7-transitions);
+}
+.wpcf7-not-valid {
+	border-color: #dc3232 !important;
+}
+.wpcf7-form textarea {
+	resize: vertical;
+}
+.wpcf7-form input[type="checkbox"]::after,
+.wpcf7-form input[type="radio"]::after {
+	content: "";
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	outline: 1px solid var(--iw-cf7-checkbox-color);
+	border: 1px solid white;
+	background-color: white;
+	transition: var(--iw-cf7-transitions);
+}
+.wpcf7-form input[type="checkbox"]:checked::after,
+.wpcf7-form input[type="radio"]:checked::after {
+	background-color: var(--iw-cf7-checkbox-color);
+	transition: var(--iw-cf7-transitions);
+}
+.wpcf7-form input[type="radio"] {
+	border-radius: 50%;
+}
+.wpcf7-form .wpcf7-acceptance .wpcf7-list-item {
+	margin-left: 0 !important;
+}
+
+
+.wpcf7-form input[type="submit"],
+.wpcf7-form input[type="clear"],
+.wpcf7-form input[type="file"],
+.wpcf7-form input[type="button"] {
+	display: inline-block;
+	border: 1px solid var(--iw-cf7-button-border-color);
+	background-color: var(--iw-cf7-button-secondary-color);
+	color: var(--iw-cf7-button-primary-color);
+	padding: 5px 35px;
+	font-size: 16px;
+	line-height: 1.3em;
+	cursor: pointer;
+	transition: var(--iw-cf7-transitions);
+}
+.wpcf7-form input[type="submit"]:not(:disabled):hover,
+.wpcf7-form input[type="clear"]:not(:disabled):hover,
+.wpcf7-form input[type="file"]:not(:disabled):hover,
+.wpcf7-form input[type="button"]:not(:disabled):hover {
+	background-color: var(--iw-cf7-button-primary-color);
+	color: var(--iw-cf7-button-secondary-color);
+	transition: var(--iw-cf7-transitions);
+}
+.wpcf7-form input[type="submit"]:disabled,
+.wpcf7-form input[type="clear"]:disabled,
+.wpcf7-form input[type="file"]:disabled,
+.wpcf7-form input[type="button"]:disabled {
+	opacity: .5;
+	transition: var(--iw-cf7-transitions);
+}
+
+.wpcf7-form p:has(.wpcf7-spinner) {
+	position: relative;
+}
+.wpcf7-form p .wpcf7-spinner {
+    position: absolute;
+    left: calc(50% - 12px);
+    right: auto;
+    bottom: auto;
+    top: calc(50% - 12px);
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* WooCommerce */
+form[class^="woocommerce"] label,
+.wc-block-checkout__form label {
+	user-select: none;
+	cursor: pointer;
+	background-color: var(--iw-woo-form-label-background-color);
+	color: var(--iw-woo-form-label-color);
+	transition: var(--iw-woo-form-transitions);
+}
+form[class^="woocommerce"] input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]),
+form[class^="woocommerce"] select,
+form[class^="woocommerce"] textarea,
+.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]),
+.wc-block-checkout__form select,
+.wc-block-checkout__form textarea {
+	width: 100%;
+	min-height: 40px;
+	border: 1px solid var(--iw-woo-form-border-color-initial);
+	padding: 10px;
+	color: var(--iw-woo-form-input-color);
+	background-color: var(--iw-woo-form-input-background-color);
+	transition: var(--iw-woo-form-transitions);
+}
+.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]),
+.wc-block-checkout__form select,
+.wc-block-checkout__form textarea {
+	padding: 20px 10px 10px;
+}
+form[class^="woocommerce"] input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):hover,
+form[class^="woocommerce"] select:hover,
+form[class^="woocommerce"] textarea:hover,
+form[class^="woocommerce"] input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):focus,
+form[class^="woocommerce"] select:focus,
+form[class^="woocommerce"] textarea:focus,
+.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):hover,
+.wc-block-checkout__form select:hover,
+.wc-block-checkout__form textarea:hover,
+.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):focus,
+.wc-block-checkout__form select:focus,
+.wc-block-checkout__form textarea:focus {
+	border-color: var(--iw-woo-form-border-color-featured);
+	transition: var(--iw-woo-form-transitions);
+}
+form[class^="woocommerce"] textarea,
+.wc-block-checkout__form textarea {
+	resize: vertical;
+}
+form[class^="woocommerce"] input[type="checkbox"]::after,
+form[class^="woocommerce"] input[type="radio"]::after,
+.wc-block-checkout__form input[type="checkbox"]::after,
+.wc-block-checkout__form input[type="radio"]::after {
+	content: "";
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	outline: 1px solid var(--iw-woo-form-checkbox-color);
+	border: 1px solid white;
+	background-color: white;
+	transition: var(--iw-woo-form-transitions);
+}
+form[class^="woocommerce"] input[type="checkbox"]:checked::after,
+form[class^="woocommerce"] input[type="radio"]:checked::after,
+.wc-block-checkout__form input[type="checkbox"]:checked::after,
+.wc-block-checkout__form input[type="radio"]:checked::after {
+	background-color: var(--iw-woo-form-checkbox-color);
+	transition: var(--iw-woo-form-transitions);
+}
+form[class^="woocommerce"] input[type="radio"],
+.wc-block-checkout__form input[type="radio"] {
+	border-radius: 50%;
+}
+
+
+form[class^="woocommerce"] input[type="submit"],
+form[class^="woocommerce"] input[type="clear"],
+form[class^="woocommerce"] input[type="file"],
+form[class^="woocommerce"] input[type="button"],
+.wc-block-checkout__form input[type="submit"],
+.wc-block-checkout__form input[type="clear"],
+.wc-block-checkout__form input[type="file"],
+.wc-block-checkout__form input[type="button"],
+.woocommerce-button {
+	display: inline-block !important;
+	border: 1px solid var(--iw-woo-form-button-secondary-color) !important;
+	background-color: var(--iw-woo-form-button-secondary-color) !important;
+	color: var(--iw-woo-form-button-primary-color) !important;
+	padding: 5px 35px !important;
+	font-size: 16px !important;
+	line-height: 1.3em !important;
+	cursor: pointer !important;
+	transition: var(--iw-woo-form-transitions) !important;
+}
+form[class^="woocommerce"] input[type="submit"]:not(:disabled):hover,
+form[class^="woocommerce"] input[type="clear"]:not(:disabled):hover,
+form[class^="woocommerce"] input[type="file"]:not(:disabled):hover,
+form[class^="woocommerce"] input[type="button"]:not(:disabled):hover,
+.wc-block-checkout__form input[type="submit"]:not(:disabled):hover,
+.wc-block-checkout__form input[type="clear"]:not(:disabled):hover,
+.wc-block-checkout__form input[type="file"]:not(:disabled):hover,
+.wc-block-checkout__form input[type="button"]:not(:disabled):hover,
+.woocommerce-button:not(:disabled):hover {
+	background-color: var(--iw-woo-form-button-primary-color) !important;
+	color: var(--iw-woo-form-button-secondary-color) !important;
+	transition: var(--iw-woo-form-transitions) !important;
+}
+form[class^="woocommerce"] input[type="submit"]:disabled,
+form[class^="woocommerce"] input[type="clear"]:disabled,
+form[class^="woocommerce"] input[type="file"]:disabled,
+form[class^="woocommerce"] input[type="button"]:disabled,
+.wc-block-checkout__form input[type="submit"]:disabled,
+.wc-block-checkout__form input[type="clear"]:disabled,
+.wc-block-checkout__form input[type="file"]:disabled,
+.wc-block-checkout__form input[type="button"]:disabled,
+.woocommerce-button:disabled {
+	opacity: .5 !important;
+	transition: var(--iw-woo-form-transitions) !important;
+}
+
+

@@ -1,0 +1,28 @@
+<?php
+/*
+Plugin Name: IndianWebs Helper
+Plugin URI: https://www.indianwebs.com/
+Description: Plugin para la implementación adicional de la página.
+Version: 3.0
+Author: IndianWebs L'Hospitalet
+Author URI: https://www.indianwebs.com/
+Text Domain: iw-helper
+Domain Path: /languages
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+
+// Iniciar Loader
+add_action('plugins_loaded', ['IW_Helper_Loader', 'init']);
+
+
+
+
+
+
+
+
+

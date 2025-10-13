@@ -1,0 +1,76 @@
+:root {
+	--iw-menu-preset-1-link-decoration-width: 105%;
+}
+
+/* Layout */
+.full-height-menu,
+.full-height-menu > .et_pb_menu_inner_container,
+.full-height-menu > .et_pb_menu_inner_container > .et_pb_menu__wrap,
+.full-height-menu > .et_pb_menu_inner_container > .et_pb_menu__wrap > .et_pb_menu__menu,
+.full-height-menu > .et_pb_menu_inner_container > .et_pb_menu__wrap > .et_pb_menu__menu > .et-menu-nav,
+.full-height-menu > .et_pb_menu_inner_container > .et_pb_menu__wrap > .et_pb_menu__menu > .et-menu-nav > .et-menu.nav {
+    position: static !important;
+    height: 100%;
+}
+
+
+
+
+
+
+/* Styles */
+.et_pb_menu.iw-preset-1 ul.et-menu > li {
+	margin-top: 0 !important;
+	display: flex !important;
+	flex-flow: row nowrap !important;
+	justify-content: center !important;
+	align-items: center !important;
+	padding: 0 20px !important;
+}
+.et_pb_menu.iw-preset-1 ul.et-menu > li > a {
+	margin-top: 0 !important;
+	padding: 8px 0px !important;
+}
+.et_pb_menu.iw-preset-1 ul.et-menu > li > a::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 50%;
+	bottom: -3px;
+	width: 0;
+	height: 3px;
+	background-color: var(--iw-general-color-featured);
+	transition: .3s;
+}
+.et_pb_menu.iw-preset-1 ul.et-menu > li > a:hover::before,
+.et_pb_menu.iw-preset-1 ul.et-menu > li.current-menu-item > a::before {
+	width: var(--iw-menu-preset-1-link-decoration-width);
+	left: calc(calc(100% - var(--iw-menu-preset-1-link-decoration-width)) / 2);
+	transition: .3s;
+}
+.et_pb_menu.iw-preset-1 ul.et-menu > li > a::after {
+	top: 0 !important;
+	right: -15px !important;
+	bottom: 0 !important;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.et_pb_menu.iw-preset-1 ul.sub-menu {
+	top: 100%;
+	width: 300px;
+	padding: 0;
+}
+.et_pb_menu.iw-preset-1 ul.sub-menu li {
+	padding: 0;
+}
+.et_pb_menu.iw-preset-1 ul.sub-menu li,
+.et_pb_menu.iw-preset-1 ul.sub-menu li a {
+	width: 100%;
+	transition: .3s;
+}
+.et_pb_menu.iw-preset-1 ul.sub-menu li a:hover {
+	opacity: 1;
+	background-color: #D9D9D9;
+	transition: .3s;
+}

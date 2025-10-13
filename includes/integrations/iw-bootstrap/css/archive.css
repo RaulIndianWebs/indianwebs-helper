@@ -1,0 +1,100 @@
+/* Maquetación CSS para los archivos de PT */
+.iw-archive {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
+.iw-archive > article {
+	width: 100%;
+	margin: 1%;
+}
+
+
+@media (max-width: 480px) {
+	.iw-archive > article {
+		width: 100%;
+	}
+	.iw-archive > article {
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 60px;
+	}
+}
+@media (min-width: 481px) and (max-width: 980px) {
+	.iw-archive.preset-2 > article,
+	.iw-archive.preset-3 > article,
+	.iw-archive.preset-4 > article,
+	.iw-archive.preset-5 > article,
+	.iw-archive.preset-6 > article {
+		width: 49%;
+	}
+	.iw-archive.preset-2 > article:nth-of-type(2n),
+	.iw-archive.preset-3 > article:nth-of-type(2n),
+	.iw-archive.preset-4 > article:nth-of-type(2n),
+	.iw-archive.preset-5 > article:nth-of-type(2n),
+	.iw-archive.preset-6 > article:nth-of-type(2n) {
+		margin-right: 0;
+	}
+	.iw-archive.preset-2 > article:nth-of-type(2n + 1),
+	.iw-archive.preset-3 > article:nth-of-type(2n + 1),
+	.iw-archive.preset-4 > article:nth-of-type(2n + 1),
+	.iw-archive.preset-5 > article:nth-of-type(2n + 1),
+	.iw-archive.preset-6 > article:nth-of-type(2n + 1) {
+		margin-left: 0;
+	}
+}
+
+
+@media (min-width: 981px) {
+	.iw-archive.preset-2 > article {
+		width: 49%;
+	}
+	.iw-archive.preset-2 > article:nth-of-type(2n) {
+		margin-right: 0;
+	}
+	.iw-archive.preset-2 > article:nth-of-type(2n + 1) {
+		margin-left: 0;
+	}
+
+	.iw-archive.preset-3 > article {
+		width: 32%;
+	}
+	.iw-archive.preset-3 > article:nth-of-type(3n) {
+		margin-right: 0;
+	}
+	.iw-archive.preset-3 > article:nth-of-type(3n + 1) {
+		margin-left: 0;
+	}
+
+	.iw-archive.preset-4 > article {
+		width: 23.5%;
+	}
+	.iw-archive.preset-4 > article:nth-of-type(4n) {
+		margin-right: 0;
+	}
+	.iw-archive.preset-4 > article:nth-of-type(4n + 1) {
+		margin-left: 0;
+	}
+
+	.iw-archive.preset-5 > article {
+		width: 18.4%;
+	}
+	.iw-archive.preset-5 > article:nth-of-type(5n) {
+		margin-right: 0;
+	}
+	.iw-archive.preset-5 > article:nth-of-type(5n + 1) {
+		margin-left: 0;
+	}
+
+	.iw-archive.preset-6 > article {
+		width: 18%;
+	}
+	.iw-archive.preset-6 > article:nth-of-type(6n) {
+		margin-right: 0;
+	}
+	.iw-archive.preset-6 > article:nth-of-type(6n + 1) {
+		margin-left: 0;
+	}
+}

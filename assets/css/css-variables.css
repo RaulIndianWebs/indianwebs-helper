@@ -1,0 +1,26 @@
+:root {
+	/* General colors */
+	--iw-general-color-primary: #ccc;
+	--iw-general-color-secondary: #fff;
+	--iw-general-color-featured: #003e91;
+
+	/* General Background Colors */
+	--iw-general-background-color-primary: #fff;
+	--iw-general-background-color-secondary: #001363;
+	--iw-general-background-color-gray-primary: #d9d9d9;
+	--iw-general-background-color-gray-secondary: #f7f7f7;
+
+
+	/* General transitions */
+	--iw-general-transitions-delay: 0s;
+	--iw-general-transitions-duration: .3s;
+	--iw-general-transitions-timing-function: ease-in-out;
+	--iw-general-transitions: 	color var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay),
+								background-color var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay),
+								border-color var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay),
+								opacity var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay),
+								top var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay),
+								right var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay),
+								bottom var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay),
+								left var(--iw-general-transitions-duration) var(--iw-general-transitions-timing-function) var(--iw-general-transitions-delay);
+}

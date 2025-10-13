@@ -1,0 +1,11 @@
+#iw-to-top-link.preset-1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: var(--iw-to-top-link-container-size);
+	height: var(--iw-to-top-link-container-size);
+	border-radius: 50%;
+	color: var(--iw-to-top-link-color);
+	background-color: var(--iw-to-top-link-background-color);
+	border: 1px solid var(--iw-to-top-link-color);
+}
