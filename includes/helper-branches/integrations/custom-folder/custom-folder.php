@@ -14,8 +14,6 @@ $structure = [
 	'',
 	'assets',
 	'assets/css',
-	'assets/css/divi-overides',
-	'assets/css/divi-presets',
 	'assets/js',
 	'assets/js-functions',
 	'assets/img',
@@ -48,6 +46,17 @@ if (!file_exists($css_variables_file)) {
 
 
 
+
+
+
+
+
+/**
+ * 
+ * 
+ * Integrations
+ * 
+ */
 // Load Custom Plugin Theme Scripts
 include_php_files(get_custom_helper_directory() . '/includes/php-functions/');
 include_php_files(get_custom_helper_directory() . '/php');
@@ -58,26 +67,3 @@ IW_Scripts_Cache::cache_css_files(get_custom_helper_directory() . '/assets/css/'
 
 IW_Scripts_Cache::cache_js_files(get_custom_helper_directory() . '/assets/js-functions/');
 IW_Scripts_Cache::cache_js_files(get_custom_helper_directory() . '/assets/js/');
-
-
-// Load custom Divi Modules
-add_action('et_builder_ready', function() {
-    include_php_files(get_custom_helper_directory() . '/includes/divi-custom-modules/');
-});
-
-// Load custom ACF Fields
-add_action('acf/include_field_types', function($version) {
-    include_php_files(get_custom_helper_directory() . '/includes/acf-custom-fields/');
-});
-
-load_custom_shortcodes(get_custom_helper_directory() . '/shortcodes/');
-
-
-
-add_action("wp_head", function() {
-	include_php_files(get_custom_helper_directory() . '/includes/integration/head/');
-});
-
-add_action("wp_footer", function() {
-	include_php_files(get_custom_helper_directory() . '/includes/integration/body/');
-});

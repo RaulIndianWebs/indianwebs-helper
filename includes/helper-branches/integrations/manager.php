@@ -49,3 +49,8 @@ add_action('admin_enqueue_scripts', function($hook) {
         wp_enqueue_style('thickbox');
     }
 });
+
+add_action("Iw_Helper_Load_Integrations",  __NAMESPACE__ . "\\iw_custom_folder");
+function iw_custom_folder() {
+    include_php_files(get_plugin_directory() . 'includes/helper-branches/setup/custom-folder/custom-folder.php');
+}

@@ -1,119 +1,94 @@
 <?php
 /**
- * Loader mejorado para páginas de administración del plugin IW Helper
+ * Loader genérico para páginas de administración
+ * Permite usarse desde cualquier ubicación (plugin, mu-plugin o theme)
+ *
+ * Ejemplos:
+ *   new IW_Helper_Admin_Pages_Loader(); // Usa rutas por defecto del plugin
+ *   new IW_Helper_Admin_Pages_Loader(WP_CONTENT_DIR . '/iw-helper/admin/'); // Ruta personalizada
+ *   new IW_Helper_Admin_Pages_Loader(get_stylesheet_directory() . '/admin/'); // Desde un tema hijo
  */
 
 class IW_Helper_Admin_Pages_Loader {
 
+    private $base_dir;
     private $pages_dir;
     private $child_pages_dir;
     private $tabs_dir;
 
-    public function __construct() {
-        $this->pages_dir       = plugin_dir_path(__FILE__) . 'pages/';
-        $this->child_pages_dir = plugin_dir_path(__FILE__) . 'child-pages/';
-        $this->tabs_dir        = plugin_dir_path(__FILE__) . 'tabs/';
+    /**
+     * Constructor flexible
+     * @param string|null $base_dir Ruta base opcional (debe contener subcarpetas pages/, child-pages/, tabs/)
+     */
+    public function __construct($base_dir = null) {
+        // Si no se pasa ruta, usar la del propio plugin
+        $this->base_dir = rtrim($base_dir ?: get_plugin_dir(), '/') . '/';
+
+        // Configurar directorios internos
+        $this->pages_dir       = $this->base_dir . 'pages/';
+        $this->child_pages_dir = $this->base_dir . 'child-pages/';
+        $this->tabs_dir        = $this->base_dir . 'tabs/';
+
+        // Enganchar registro de páginas
         add_action('admin_menu', [$this, 'register_pages']);
     }
 
     /**
-     * Registra todas las páginas principales y luego los submenús
+     * Registra todas las páginas principales y subpáginas
      */
     public function register_pages() {
-
-        // 1️⃣ Registrar menús principales (desde plugin)
-        foreach (glob($this->pages_dir . '*.php') as $file) {
+        // 1️⃣ Páginas principales
+        foreach ($this->get_php_files($this->pages_dir) as $file) {
             $this->register_page($file, true);
         }
 
-        // 2️⃣ Registrar subpáginas (desde plugin)
-        foreach (glob($this->child_pages_dir . '*.php') as $file) {
-            $this->register_page($file, false);
-        }
-
-        // 3️⃣ Registrar menús principales (desde theme/child-theme)
-        foreach (glob(get_stylesheet_directory() . '/iw-helper/admin/pages/*.php') as $file) {
-            $this->register_page($file, true);
-        }
-
-        // 4️⃣ Registrar subpáginas (desde theme/child-theme)
-        foreach (glob(get_stylesheet_directory() . '/iw-helper/admin/child-pages/*.php') as $file) {
+        // 2️⃣ Subpáginas
+        foreach ($this->get_php_files($this->child_pages_dir) as $file) {
             $this->register_page($file, false);
         }
     }
 
     /**
-     * Registro de página o subpágina
+     * Obtiene todos los archivos PHP de un directorio
+     */
+    private function get_php_files($dir) {
+        if (!is_dir($dir)) return [];
+        return glob(trailingslashit($dir) . '*.php') ?: [];
+    }
+
+    /**
+     * Registra una página o subpágina
      */
     private function register_page($file, $is_main) {
-
-        // Ignorar archivos sample
         if (strpos(basename($file), 'sample') !== false) {
-            return;
+            return; // ignorar archivos de ejemplo
         }
 
         $headers = $this->get_file_headers($file);
 
-        // Deben tener Page Name y Menu Slug
         if (empty($headers['Page Name']) || empty($headers['Menu Slug'])) {
             return;
         }
 
-        // Callback que incluye primero contenido principal y luego tabs si existen
+        // Callback del contenido
         $callback = function() use ($file, $headers) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                array_walk_recursive($_POST, function(&$item, $key) {
-                    if (is_string($item)) {
-                        $item = stripslashes($item);
-                    }
+                array_walk_recursive($_POST, function(&$item) {
+                    if (is_string($item)) $item = stripslashes($item);
                 });
             }
-            // 1️⃣ Incluir contenido principal de la página
+
+            // 1️⃣ Contenido principal
             include $file;
 
-            // 2️⃣ Procesar tabs si existen
-            $tabs = [];
-            if (!empty($headers['Tabs'])) {
-                foreach (explode('|', $headers['Tabs']) as $tab_def) {
-                    [$slug, $title] = explode('=', $tab_def);
-                    $tabs[trim($slug)] = trim($title);
-                }
-            }
-
-            if ($tabs) {
-                $current_tab = $_GET['tab'] ?? key($tabs);
-
-                // Mostrar barra de tabs
-                echo '<h2 class="nav-tab-wrapper">';
-                foreach ($tabs as $slug => $title) {
-                    $active = $current_tab === $slug ? ' nav-tab-active' : '';
-                    $url = add_query_arg(['page' => $headers['Menu Slug'], 'tab' => $slug], admin_url('admin.php'));
-                    echo '<a href="' . esc_url($url) . '" class="nav-tab' . $active . '">' . esc_html($title) . '</a>';
-                }
-                echo '</h2>';
-
-                // 🔥 Nueva forma de localizar el archivo de la tab
-                $tab_file = $this->tabs_dir . $headers['Menu Slug'] . '/' . $current_tab . '.php';
-
-                if (file_exists($tab_file)) {
-                    include $tab_file;
-                } else {
-                    echo '<p><em>No existe el archivo de la pestaña: ' . esc_html($current_tab) . '</em></p>';
-                }
-            }
+            // 2️⃣ Tabs (si existen)
+            $this->render_tabs($headers);
         };
 
-
+        // Menú principal
         if ($is_main && empty($headers['Parent Slug'])) {
-            $position = 0;
-            if (isset($headers['Position']) && $headers['Position'] != "") {
-                $position = $headers['Position'];
-            }
-            else {
-                $position = null;
-            }
+            $position = $headers['Position'] ?: null;
 
-            // Menú principal
             add_menu_page(
                 $headers['Page Name'],
                 $headers['Menu Title'] ?? $headers['Page Name'],
@@ -124,7 +99,6 @@ class IW_Helper_Admin_Pages_Loader {
                 $position
             );
 
-            // Submenú obligatorio para evitar redirección automática de WP
             add_submenu_page(
                 $headers['Menu Slug'],
                 $headers['Page Name'],
@@ -134,16 +108,14 @@ class IW_Helper_Admin_Pages_Loader {
                 $callback
             );
 
-            // Redirección automática si se indica en headers
             if (!empty($headers['Redirect'])) {
                 add_action('load-toplevel_page_' . $headers['Menu Slug'], function() use ($headers) {
                     wp_redirect(admin_url('admin.php?page=' . $headers['Redirect']));
                     exit;
                 });
             }
-
         } else {
-            // Subpágina normal
+            // Subpágina
             add_submenu_page(
                 $headers['Parent Slug'],
                 $headers['Page Name'],
@@ -152,6 +124,37 @@ class IW_Helper_Admin_Pages_Loader {
                 $headers['Menu Slug'],
                 $callback
             );
+        }
+    }
+
+    /**
+     * Renderiza las tabs si existen
+     */
+    private function render_tabs($headers) {
+        if (empty($headers['Tabs'])) return;
+
+        $tabs = [];
+        foreach (explode('|', $headers['Tabs']) as $tab_def) {
+            [$slug, $title] = explode('=', $tab_def);
+            $tabs[trim($slug)] = trim($title);
+        }
+
+        $current_tab = $_GET['tab'] ?? key($tabs);
+
+        echo '<h2 class="nav-tab-wrapper">';
+        foreach ($tabs as $slug => $title) {
+            $active = $current_tab === $slug ? ' nav-tab-active' : '';
+            $url = add_query_arg(['page' => $headers['Menu Slug'], 'tab' => $slug], admin_url('admin.php'));
+            echo '<a href="' . esc_url($url) . '" class="nav-tab' . $active . '">' . esc_html($title) . '</a>';
+        }
+        echo '</h2>';
+
+        // Archivo de la pestaña
+        $tab_file = $this->tabs_dir . $headers['Menu Slug'] . '/' . $current_tab . '.php';
+        if (file_exists($tab_file)) {
+            include $tab_file;
+        } else {
+            echo '<p><em>No existe el archivo de la pestaña: ' . esc_html($current_tab) . '</em></p>';
         }
     }
 
@@ -168,16 +171,10 @@ class IW_Helper_Admin_Pages_Loader {
             'Position'    => 'Position',
             'Icon'        => 'Icon',
             'Redirect'    => 'Redirect',
-            'Tabs'        => 'Tabs', // cabecera de tabs
-        ];  
-
+            'Tabs'        => 'Tabs',
+        ];
         return get_file_data($file, $default_headers);
     }
 }
 
-
-
-
-// Inicializar loader del plugin IW Helper
 new IW_Helper_Admin_Pages_Loader();
-
