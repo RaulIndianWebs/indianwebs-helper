@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer("iw_save")) {
             }
         }
 
-        saveHelperOptions($option_slug, $new_config);
+        Iw_Helper_DB_Manager::options("save", $option_slug, $new_config);
         echo '<div class="updated"><p>Configuración guardada correctamente.</p></div>';
     }
 }
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer("iw_save")) {
 echo '<h3>Shortcode</h3>';
 echo '<p>Para mostrar esta información en el front end se puede utilizar el shortcode [iw-display-contact-info].</p><br>';
 
-$config = getHelperOptions($option_slug);
+$config = Iw_Helper_DB_Manager::options("get", $option_slug);
 $sections = [
     'email'   => 'Correo electrónico',
     'phone'   => 'Teléfono',

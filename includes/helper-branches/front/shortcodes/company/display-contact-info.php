@@ -3,7 +3,7 @@ $atts = shortcode_atts(array(
     "label" => false,
 ), $atts);
 
-$contactDB = getHelperOptions("company-front-info");
+$contactDB = Iw_Helper_DB_Manager::options("get", "company-front-info");
 if (empty($contactDB) || !is_array($contactDB)) return '';
 
 $output = '<ul class="iw-contact-info">';

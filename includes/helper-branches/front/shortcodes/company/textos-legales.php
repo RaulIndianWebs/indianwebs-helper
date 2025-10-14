@@ -4,7 +4,7 @@ $atts = shortcode_atts(array(
     'contenido' => '',
 ), $atts);
 
-$datosArray = getHelperOptions("company-legal-info");
+$datosArray = Iw_Helper_DB_Manager::options("get", "company-legal-info");
 
 $placeholders = [
     '{{site_url}}'                      => esc_url($datosArray["site_url"]),

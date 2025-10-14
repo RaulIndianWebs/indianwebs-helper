@@ -3,7 +3,7 @@ echo '<form method="post">';
 wp_nonce_field("iw_save");
 
 $option_slug = 'company-legal-info';
-$config = getHelperOptions($option_slug);
+$config = Iw_Helper_DB_Manager::options("get", $option_slug);
 
 
 if (
@@ -41,7 +41,7 @@ if (
         'formulario_devoluciones' => esc_url_raw($_POST['formulario_devoluciones'] ?? ''),
     ];
 
-    saveHelperOptions($option_slug, $config);
+    Iw_Helper_DB_Manager::options("save", $option_slug, $config);
 
     echo '<div class="updated"><p>Información de empresa guardada correctamente.</p></div>';
 }

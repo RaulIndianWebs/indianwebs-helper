@@ -1,6 +1,6 @@
 <?php
 // Get menu options
-$options = getHelperOptions("helper-config")["features-options"]["to-top-link"];
+$options = Iw_Helper_DB_Manager::options("get", "helper-config")["features-options"]["to-top-link"];
 
 
 if ($options["active"]) {

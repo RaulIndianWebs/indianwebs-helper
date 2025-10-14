@@ -17,10 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Iniciar Loader
 add_action('plugins_loaded', "iw_helper_load");
-
 function iw_helper_load() {
     require_once __DIR__."/loader.php";
 }
+
+register_uninstall_hook(__FILE__, 'iw_helper_uninstall');
+function iw_helper_uninstall() {
+    Iw_Helper_DB_Manager::resetAll();
+}
+
 
 
 

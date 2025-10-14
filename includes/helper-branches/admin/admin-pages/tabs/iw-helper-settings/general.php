@@ -2,7 +2,7 @@
 echo '<form method="post">';
 wp_nonce_field("iw_save");
 
-$config = getHelperOptions('helper-config');
+$config = Iw_Helper_DB_Manager::options("get", 'helper-config');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer("iw_save")) {
     $new_config = [
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer("iw_save")) {
             ]
         ]
     ];
-    saveHelperOptions('helper-config', $new_config);
+    Iw_Helper_DB_Manager::options("save", 'helper-config', $new_config);
     $config = $new_config;
     echo '<div class="updated"><p>Configuración guardada correctamente.</p></div>';
 }

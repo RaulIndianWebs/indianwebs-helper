@@ -1,6 +1,6 @@
 <?php
 // Get menu options
-$options = getHelperOptions("helper-config")["features-options"]["off-canva-options"];
+$options = Iw_Helper_DB_Manager::options("get", "helper-config")["features-options"]["off-canva-options"];
 
 
 if ($options["active"]) {
