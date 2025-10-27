@@ -2,16 +2,17 @@
 
 if (!function_exists('iw_load_template')) {
     /**
-     * Carga un template desde el plugin editable o el plugin base.
+     * Carga un template desde el plugin, la carpeta de desarrollo o un tema hijo.
      *
      * @param string $template_name  Nombre del template (sin extensión .php)
      * @param array  $vars           Variables a pasar al template
      */
-    function iw_load_template($template_name, $vars = array()) {
+    function iw_load_template($template_name, $vars = array(), $layout = "layout_1") {
         // Rutas base
-        $theme_template = get_stylesheet_dir() . 'includes/templates/' . $template_name . '.php';
-        $user_template = get_custom_helper_dir() . 'includes/templates/' . $template_name . '.php';
-        $core_template = get_plugin_dir() . 'includes/templates/' . $template_name . '.php';
+        $base_path = 'includes/templates/' . $template_name;
+        $theme_template = get_stylesheet_dir() . $base_path;
+        $user_template = get_custom_helper_dir() . $base_path;
+        $core_template = get_plugin_dir() . $base_path;
 
         // Determinar cuál existe
         if (file_exists($theme_template)) {
@@ -34,6 +35,10 @@ if (!function_exists('iw_load_template')) {
         }
 
         // Incluir el archivo
-        include $template_path;
+        include $template_path . $layout . '.php';
+
+        IW_Scripts_Cache::cache_css_files($template_path."/css");
+	    IW_Scripts_Cache::cache_js_files($template_path."/js");
     }
 }
+
