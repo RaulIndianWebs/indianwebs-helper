@@ -25,6 +25,7 @@ $atts['estructura'] = shortcode_atts(array(
     'container-id'  => '',
     'item'          => 'li',
     'item-header'   => 'h2',
+    'layout'        => null,
 ), $atts);
 
 // Construcción de la query
@@ -51,20 +52,12 @@ $item_tag        = tag_escape($atts['estructura']['item']);
 $header_tag      = tag_escape($atts['estructura']['item-header']);
 
 // Render
-$output = '<' . $container_tag . $container_id . ' class="iw-post-list">';
-if ($query->have_posts()) {
-    while ($query->have_posts()) {
-        $query->the_post();
-        $output .= '<' . $item_tag . '>';
-        $output .= '<' . $header_tag . '><a href="' . esc_url(get_permalink()) . '">' 
-                 . esc_html(get_the_title()) . '</a></' . $header_tag . '>';
-        $output .= '</' . $item_tag . '>';
-    }
-} else {
-    $output .= '<p>No se encontraron resultados.</p>';
-}
-$output .= '</' . $container_tag . '>';
-
-wp_reset_postdata();
-
-return $output;
+ob_start();
+iw_load_template("main/shortcodes/post-list", array(
+    "container_tag" => $container_tag,
+    "container_id" => $container_id,
+    "query" => $query,
+    "item_tag" => $item_tag,
+    "header_tag" => $header_tag,
+));
+return ob_get_clean();
