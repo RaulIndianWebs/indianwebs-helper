@@ -7,7 +7,7 @@ if (!function_exists('iw_load_template')) {
      * @param string $template_name  Nombre del template (sin extensión .php)
      * @param array  $vars           Variables a pasar al template
      */
-    function iw_load_template($template_name, $vars = array(), $layout = "layout_1") {
+    function iw_load_template($template_name, $vars = array(), $layout=null) {
         // Rutas base
         $base_path = 'includes/templates/' . $template_name;
         $theme_template = get_stylesheet_dir() . $base_path;
@@ -35,6 +35,7 @@ if (!function_exists('iw_load_template')) {
         }
 
         // Incluir el archivo
+        $layout ??= "layout_1";
         include $template_path . $layout . '.php';
 
         IW_Scripts_Cache::cache_css_files($template_path."/css");
