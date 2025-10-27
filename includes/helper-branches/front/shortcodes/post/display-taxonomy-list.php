@@ -17,17 +17,5 @@ if (is_wp_error($taxonomy_array)) {
     return '<div class="iw-taxonomy-list-error">Error: ' . esc_html($taxonomy_array->get_error_message()) . '</div>';
 }
 
-$output = '<div class="iw-taxonomy-list">';
-$output .= iw_display_taxonomy_list_helper($taxonomy_array);
-$output .= '</div>';
+
 return $output;
-
-
-
-
-
-/*
-add_shortcode("iw-display-taxonomy-list", function($atts) {
-    
-});
-*/

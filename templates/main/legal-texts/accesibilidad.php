@@ -1,8 +1,8 @@
 <h1>DECLARACIÓN DE ACCESIBILIDAD</h1>
-<p><strong>URL:</strong> <a href="{{site_url}}">{{site_url}}</a></p>
+<p><strong>URL:</strong> <a href="<?php echo $site_url; ?>"><?php echo $site_url; ?></a></p>
 
 <h2>Situación de cumplimiento</h2>
-<p>{{site_name}} (en adelante, también Sitio Web) es parcialmente conforme con el Real Decreto 1112/2018, de 7 de septiembre, debido a la falta de conformidad de los aspectos que se indican a continuación.</p>
+<p><?php echo $site_name; ?> (en adelante, también Sitio Web) es parcialmente conforme con el Real Decreto 1112/2018, de 7 de septiembre, debido a la falta de conformidad de los aspectos que se indican a continuación.</p>
 
 <h2>Contenido no accesible</h2>
 <p>El contenido que se recoge a continuación no es accesible por los siguientes motivos:</p>
@@ -13,7 +13,41 @@
 
 <p>c. Contenido no entra dentro del ámbito de la legislación aplicable:</p>
 <ul>
-	<li>Pueden existir archivos de ofimática en PDF y otros formatos publicados antes del 20 de septiembre de 2018 que no cumplan en su totalidad todos los requisitos de accesibilidad. Aunque se ha procurado que la mayoría de ellos sí lo cumplan.</li>
+	<li>Pueden existir archivos de ofimátic12/2018: No aplica. Cumple el 100% de los criterios de accesibilidad web.</p>
+
+		<p>b. Carga desproporcionada: No aplica.</p>
+		
+		<p>c. Contenido no entra dentro del ámbito de la legislación aplicable:</p>
+		<ul>
+			<li>Pueden existir archivos de ofimática en PDF y otros formatos publicados antes del 20 de septiembre de 2018 que no cumplan en su totalidad todos los requisitos de accesibilidad. Aunque se ha procurado que la mayoría de ellos sí lo cumplan.</li>
+			<li>Puede haber contenidos de terceros que no estén desarrollados en esta Unidad ni bajo su control como imágenes, mapas interactivos, videos, documentos, reproductores, etc.</li>
+			<li>Pueden existir archivos pregrabados publicados antes del 20 de septiembre de 2018 que no cumplan en su totalidad todos los requisitos de accesibilidad.</li>
+			<li>Partes o la totalidad del sitio web puede estar creado con un CMS (WordPress, Shopify, PrestaShop, etc), por lo que debido a alguna actualización o cambio en los sistemas, puede que no todo el contenido generado o autogenerado cumpla con todas las normativas de accesibilidad.</li>
+		</ul>
+		<h2>Preparación de la presente declaración de accesibilidad</h2>
+		<p>La presente declaración fue preparada el día 26/08/2025</p>
+		
+		<p>El método empleado para preparar la declaración ha sido una autoevaluación llevada a cabo por la propia empresa.</p>
+		
+		<p>Última revisión de la declaración: 26/08/2025</p>
+		
+		<h2>Observaciones y datos de contacto</h2>
+		<p>Puede realizar comunicaciones sobre requisitos de accesibilidad (artículo 10.2.a del Real Decreto 1112/2018, de 7 de septiembre) como, por ejemplo:</p>
+		<ul>
+			<li>Informar sobre cualquier posible incumplimiento por parte de este sitio web.</li>
+			<li>Transmitir otras dificultades de acceso al contenido.</li>
+			<li>Formular cualquier otra consulta o sugerencia de mejora relativa a la accesibilidad del sitio web.</li>
+		</ul>
+		<p>A través de las siguientes vías:
+		<ul>
+			<li>Correo electrónico: <?php echo $email; ?></li>
+			<li>Teléfono: <?php echo $telefono; ?></li>
+		</ul>
+		<p>Acorde al artículo 10.2.b del RD 1112/2018, también puedes presentar:</p>
+		<ul>
+			<li>Una queja relativa al cumplimiento de los requisitos del RD 1112/2018.</li>
+			<li>Una solicitud de información accesible relativa a:</li>
+			<ul>a en PDF y otros formatos publicados antes del 20 de septiembre de 2018 que no cumplan en su totalidad todos los requisitos de accesibilidad. Aunque se ha procurado que la mayoría de ellos sí lo cumplan.</li>
 	<li>Puede haber contenidos de terceros que no estén desarrollados en esta Unidad ni bajo su control como imágenes, mapas interactivos, videos, documentos, reproductores, etc.</li>
 	<li>Pueden existir archivos pregrabados publicados antes del 20 de septiembre de 2018 que no cumplan en su totalidad todos los requisitos de accesibilidad.</li>
 	<li>Partes o la totalidad del sitio web puede estar creado con un CMS (WordPress, Shopify, PrestaShop, etc), por lo que debido a alguna actualización o cambio en los sistemas, puede que no todo el contenido generado o autogenerado cumpla con todas las normativas de accesibilidad.</li>
@@ -34,8 +68,8 @@
 </ul>
 <p>A través de las siguientes vías:
 <ul>
-	<li>Correo electrónico: {{email}}</li>
-	<li>Teléfono: {{telefono}}</li>
+	<li>Correo electrónico: <?php echo $email; ?></li>
+	<li>Teléfono: <?php echo $telefono; ?></li>
 </ul>
 <p>Acorde al artículo 10.2.b del RD 1112/2018, también puedes presentar:</p>
 <ul>

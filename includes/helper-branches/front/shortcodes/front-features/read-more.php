@@ -1,16 +1,13 @@
 <?php
-IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/shortcodes/read-more.css');
-IW_Scripts_Cache::cache_js_files(get_plugin_directory() . 'assets/js/shortcodes/read-more.js');
+$atts = shortcodes_atts(array(
+    'content' => '',
+    'template' => null,
+), $atts);
 
-return '<div class="iw-read-more-text">' . do_shortcode($content) . '</div>';
+ob_start();
 
+iw_load_template("main/shortcodes/read-more", array(
+    'content' => $atts["content"],
+));
 
-
-
-
-
-/*
-add_shortcode('iw-read-more', function($atts, $content = null) {
-    
-});
-*/
+return ob_get_clean();
