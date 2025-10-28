@@ -1,21 +1,66 @@
 <?php
-
-
 $atts = shortcode_atts(array(
-    "post-type" => "",
     "taxonomy-name" => "",
-    "dimension" => "0",
-    "parent" => null
+    "depth"         => -1,
+    "parent"        => 0,
+    "layout"        => "default",
 ), $atts);
 
-
-$taxonomy_array = get_taxonomy_array($atts["post-type"], $atts["taxonomy-name"], intval($atts["dimension"]), $atts["parent"]);
-
-
-// Comprobar si es WP_Error para mostrar error en el shortcode
-if (is_wp_error($taxonomy_array)) {
-    return '<div class="iw-taxonomy-list-error">Error: ' . esc_html($taxonomy_array->get_error_message()) . '</div>';
+if (empty($atts['taxonomy-name']) || !taxonomy_exists($atts['taxonomy-name'])) {
+    return "<p>Taxonomía no válida.</p>";
 }
 
+ob_start();
 
-return $output;
+iw_load_template('main/shortcodes/taxonomy-list', array(
+    'taxonomy' => $atts['taxonomy-name'],
+    'part'    => "container-open",
+), $atts["layout"]);
+
+iw_render_taxonomy_items($atts['taxonomy-name'], $atts["depth"], $atts["parent"], $atts["layout"]);
+
+iw_load_template('main/shortcodes/taxonomy-list', array(
+    'part'    => "container-close",
+), $atts["layout"]);
+
+return ob_get_clean();
+
+
+
+
+/**
+ * Carga recursiva de los términos usando templates
+ */
+function iw_render_taxonomy_items($taxonomy, $depth, $parent,  $layout = "default", $current_depth = 0) {
+    if ($current_depth >= $depth) {
+        iw_load_template('main/shortcodes/taxonomy-list', array(
+            'term_name'          => $term->name,
+            'term_url'          => get_term_link($term),
+            'part'    => "child-single",
+        ), $layout);
+    }
+    else {
+        foreach ($terms as $term) {
+            $children = get_terms(array(
+                'taxonomy'   => $taxonomy,
+                'hide_empty' => false,
+                'parent'     => $term->term_id,
+            ));
+
+            if (empty($children)) {
+                $single = true;
+            }
+            else {
+                iw_load_template('main/shortcodes/taxonomy-list', array(
+                    'term'          => $term,
+                    'part'    => "child-has-children-open",
+                ), $layout);
+                iw_render_taxonomy_items($taxonomy, $children, $current_depth + 1, $layout);
+                iw_load_template('main/shortcodes/taxonomy-list', array(
+                    'term'          => $term,
+                    'part'    => "child-has-children-close",
+                ), $layout);
+            }
+        }
+    }
+}
