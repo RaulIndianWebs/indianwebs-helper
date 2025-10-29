@@ -1,8 +1,8 @@
 <?php
 namespace IW_Helper\Config;
 
-add_action("Iw_Helper_Load_Config",  __NAMESPACE__ . "\\iw_load_constants");
-function iw_load_constants() {
+add_action("Iw_Helper_Load_Config",  __NAMESPACE__ . "\\iw_load_env_constants");
+function iw_load_env_constants() {
     // Plugin enviroment
     define('IW_HELPER_VERSION', '1.0.0');
 
