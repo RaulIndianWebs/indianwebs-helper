@@ -4,97 +4,62 @@
 	flex-flow: row wrap;
 	justify-content: flex-start;
 	align-items: stretch;
+	gap: var(--iw-helper-archive-column-gap);
 }
 
 .iw-archive > article {
-	width: 100%;
-	margin: 1%;
+	width: calc(calc(100% - calc(var(--iw-helper-archive-column-number) * var(--iw-helper-archive-column-gap))) / var(--iw-helper-archive-column-gap));
+	margin: 0;
+	padding: 0;
 }
 
 
 @media (max-width: 480px) {
-	.iw-archive > article {
+	.iw-archive {
 		width: 100%;
-	}
-	.iw-archive > article {
-		margin-left: 0;
-		margin-right: 0;
-		margin-bottom: 60px;
+		--iw-helper-archive-column-gap: 0;
+		--iw-helper-archive-column-number: 1;
 	}
 }
 @media (min-width: 481px) and (max-width: 980px) {
+	.iw-archive.preset-1 > article {
+		--iw-helper-archive-column-gap: 0;
+		--iw-helper-archive-column-number: 1;
+	}
 	.iw-archive.preset-2 > article,
 	.iw-archive.preset-3 > article,
 	.iw-archive.preset-4 > article,
 	.iw-archive.preset-5 > article,
 	.iw-archive.preset-6 > article {
-		width: 49%;
-	}
-	.iw-archive.preset-2 > article:nth-of-type(2n),
-	.iw-archive.preset-3 > article:nth-of-type(2n),
-	.iw-archive.preset-4 > article:nth-of-type(2n),
-	.iw-archive.preset-5 > article:nth-of-type(2n),
-	.iw-archive.preset-6 > article:nth-of-type(2n) {
-		margin-right: 0;
-	}
-	.iw-archive.preset-2 > article:nth-of-type(2n + 1),
-	.iw-archive.preset-3 > article:nth-of-type(2n + 1),
-	.iw-archive.preset-4 > article:nth-of-type(2n + 1),
-	.iw-archive.preset-5 > article:nth-of-type(2n + 1),
-	.iw-archive.preset-6 > article:nth-of-type(2n + 1) {
-		margin-left: 0;
+		--iw-helper-archive-column-gap: 50px;
+		--iw-helper-archive-column-number: 2;
 	}
 }
 
 
 @media (min-width: 981px) {
 	.iw-archive.preset-2 > article {
-		width: 49%;
-	}
-	.iw-archive.preset-2 > article:nth-of-type(2n) {
-		margin-right: 0;
-	}
-	.iw-archive.preset-2 > article:nth-of-type(2n + 1) {
-		margin-left: 0;
+		--iw-helper-archive-column-gap: 50px;
+		--iw-helper-archive-column-number: 2;
 	}
 
 	.iw-archive.preset-3 > article {
-		width: 32%;
-	}
-	.iw-archive.preset-3 > article:nth-of-type(3n) {
-		margin-right: 0;
-	}
-	.iw-archive.preset-3 > article:nth-of-type(3n + 1) {
-		margin-left: 0;
+		--iw-helper-archive-column-gap: 50px;
+		--iw-helper-archive-column-number: 3;
 	}
 
 	.iw-archive.preset-4 > article {
-		width: 23.5%;
-	}
-	.iw-archive.preset-4 > article:nth-of-type(4n) {
-		margin-right: 0;
-	}
-	.iw-archive.preset-4 > article:nth-of-type(4n + 1) {
-		margin-left: 0;
+		--iw-helper-archive-column-gap: 50px;
+		--iw-helper-archive-column-number: 4;
 	}
 
 	.iw-archive.preset-5 > article {
-		width: 18.4%;
-	}
-	.iw-archive.preset-5 > article:nth-of-type(5n) {
-		margin-right: 0;
-	}
-	.iw-archive.preset-5 > article:nth-of-type(5n + 1) {
-		margin-left: 0;
+		--iw-helper-archive-column-gap: 50px;
+		--iw-helper-archive-column-number: 5;
 	}
 
 	.iw-archive.preset-6 > article {
-		width: 18%;
-	}
-	.iw-archive.preset-6 > article:nth-of-type(6n) {
-		margin-right: 0;
-	}
-	.iw-archive.preset-6 > article:nth-of-type(6n + 1) {
-		margin-left: 0;
+		--iw-helper-archive-column-gap: 50px;
+		--iw-helper-archive-column-number: 6;
 	}
 }
