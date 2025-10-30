@@ -1,4 +1,5 @@
 <?php
+namespace IW_Helper\Admin;
 /**
  * Loader genérico para páginas de administración
  * Permite usarse desde cualquier ubicación (plugin, mu-plugin o theme)
@@ -11,40 +12,40 @@
 
 class IW_Helper_Admin_Pages_Loader {
 
-    private $base_dir;
-    private $pages_dir;
-    private $child_pages_dir;
-    private $tabs_dir;
+    private static array $base_dir;
+
+    public static function add_dir($base_dir) {
+        self::$base_dir[] = rtrim($base_dir, '/') . '/';
+    }
 
     /**
      * Constructor flexible
      * @param string|null $base_dir Ruta base opcional (debe contener subcarpetas pages/, child-pages/, tabs/)
      */
-    public static function init($base_dir = null) {
-        // Si no se pasa ruta, usar la del propio plugin
-        self::$base_dir = rtrim($base_dir ?: get_plugin_dir(), '/') . '/';
-
-        // Configurar directorios internos
-        self::$pages_dir       = self::$base_dir . 'pages/';
-        self::$child_pages_dir = self::$base_dir . 'child-pages/';
-        self::$tabs_dir        = self::$base_dir . 'tabs/';
-
-        // Enganchar registro de páginas
-        add_action('admin_menu', [self, 'register_pages']);
+    public static function init() {
+        add_action('admin_menu', [self::class, 'register_pages']);
     }
 
     /**
      * Registra todas las páginas principales y subpáginas
      */
     public static function register_pages() {
-        // 1️⃣ Páginas principales
-        foreach (self::get_php_files(self::$pages_dir) as $file) {
-            self::register_page($file, true);
-        }
+        foreach (self::$base_dir as $dir) {
+            // Configurar directorios internos
+            $pages_dir       = self::$base_dir . 'pages/';
+            $child_pages_dir = self::$base_dir . 'child-pages/';
+            $tabs_dir        = self::$base_dir . 'tabs/';
 
-        // 2️⃣ Subpáginas
-        foreach (self::get_php_files(self::$child_pages_dir) as $file) {
-            self::register_page($file, false);
+
+            // 1️⃣ Páginas principales
+            foreach (self::get_php_files($pages_dir) as $file) {
+                self::register_page($file, true, $tabs_dir);
+            }
+
+            // 2️⃣ Subpáginas
+            foreach (self::get_php_files($child_pages_dir) as $file) {
+                self::register_page($file, false, $tabs_dir);
+            }
         }
     }
 
@@ -59,7 +60,7 @@ class IW_Helper_Admin_Pages_Loader {
     /**
      * Registra una página o subpágina
      */
-    private static function register_page($file, $is_main) {
+    private static function register_page($file, $is_main, $tabs_dir) {
         if (strpos(basename($file), 'sample') !== false) {
             return; // ignorar archivos de ejemplo
         }
@@ -82,7 +83,7 @@ class IW_Helper_Admin_Pages_Loader {
             include $file;
 
             // 2️⃣ Tabs (si existen)
-            self::render_tabs($headers);
+            self::render_tabs($headers, $tabs_dir);
         };
 
         // Menú principal
@@ -130,7 +131,7 @@ class IW_Helper_Admin_Pages_Loader {
     /**
      * Renderiza las tabs si existen
      */
-    private static function render_tabs($headers) {
+    private static function render_tabs($headers, $tabs_dir) {
         if (empty($headers['Tabs'])) return;
 
         $tabs = [];
@@ -150,7 +151,7 @@ class IW_Helper_Admin_Pages_Loader {
         echo '</h2>';
 
         // Archivo de la pestaña
-        $tab_file = self::tabs_dir . $headers['Menu Slug'] . '/' . $current_tab . '.php';
+        $tab_file = $tabs_dir . $headers['Menu Slug'] . '/' . $current_tab . '.php';
         if (file_exists($tab_file)) {
             include $tab_file;
         } else {
@@ -176,5 +177,3 @@ class IW_Helper_Admin_Pages_Loader {
         return get_file_data($file, $default_headers);
     }
 }
-
-new IW_Helper_Admin_Pages_Loader();
