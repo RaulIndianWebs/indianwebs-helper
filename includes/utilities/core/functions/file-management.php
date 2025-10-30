@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists("enqueue_css_files")) {
     /**
      * Encola archivos CSS desde cualquier ruta del sistema, incluyendo subdirectorios.

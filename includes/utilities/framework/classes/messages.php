@@ -1,4 +1,9 @@
 <?php
+
+namespace IW_Helper\Utilities\Framework\Interaction;
+
+use Iw_Log;
+
 if (!class_exists("Iw_Message")) {
     class Iw_Message extends Iw_Log {
         public static function error(string $message, bool $console) {

@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('iw_load_template')) {
     /**
      * Carga un template desde el plugin, la carpeta de desarrollo o un tema hijo.

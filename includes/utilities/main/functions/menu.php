@@ -1,7 +1,10 @@
 <?php
+
+namespace IW_Helper\Utilities\Features\Customization;
+
 if (!function_exists("iw_render_custom_accordion_menu")) {
     function iw_render_custom_accordion_menu($theme_location) {
-        $locations = get_nav_menu_locations();
+        $locations = \get_nav_menu_locations();
 
         if (!isset($locations[$theme_location])) {
             echo '<p>No hay menú asignado a la ubicación "' . esc_html($theme_location) . '".</p>';
@@ -9,8 +12,8 @@ if (!function_exists("iw_render_custom_accordion_menu")) {
         }
 
         // Obtener el objeto de menú
-        $menu = wp_get_nav_menu_object($locations[$theme_location]);
-        $menu_items = wp_get_nav_menu_items($menu->term_id);
+        $menu = \wp_get_nav_menu_object($locations[$theme_location]);
+        $menu_items = \wp_get_nav_menu_items($menu->term_id);
 
         // Construir un array jerárquico
         $menu_tree = [];

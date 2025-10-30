@@ -1,34 +1,37 @@
 <?php
+
+namespace IW_Helper\Utilities\Features\Posts;
+
 if (!function_exists("get_taxonomy_array")) {
     function get_taxonomy_array($post_type, $taxonomy_name, $dimension, $parent=null) {
         // Validar que se reciban los parámetros
         if (empty($post_type)) {
-            return new WP_Error('missing_post_type', 'El parámetro post_type es obligatorio.');
+            return new \WP_Error('missing_post_type', 'El parámetro post_type es obligatorio.');
         }
 
         if (empty($taxonomy_name)) {
-            return new WP_Error('missing_taxonomy_name', 'El parámetro taxonomy_name es obligatorio.');
+            return new \WP_Error('missing_taxonomy_name', 'El parámetro taxonomy_name es obligatorio.');
         }
 
         if (!taxonomy_exists($taxonomy_name)) {
-            return new WP_Error('invalid_taxonomy', 'La taxonomía especificada no existe.');
+            return new \WP_Error('invalid_taxonomy', 'La taxonomía especificada no existe.');
         }
 
         // Validar dimension
         if (!is_numeric($dimension)) {
-            return new WP_Error('invalid_dimension', 'El parámetro dimension debe ser numérico.');
+            return new \('invalid_dimension', 'El parámetro dimension debe ser numérico.');
         }
         $dimension = (int) $dimension;
 
         $taxonomy = get_taxonomy($taxonomy_name);
 
         if (!$taxonomy) {
-            return new WP_Error('taxonomy_not_found', 'No se pudo obtener la taxonomía.');
+            return new \('taxonomy_not_found', 'No se pudo obtener la taxonomía.');
         }
 
         // Validar post_type dentro de la taxonomía
         if (!isset($taxonomy->object_type) || !in_array($post_type, (array) $taxonomy->object_type)) {
-            return new WP_Error('invalid_post_type', 'El post_type no está asociado a la taxonomía.');
+            return new \('invalid_post_type', 'El post_type no está asociado a la taxonomía.');
         }
 
         $args = [
@@ -42,13 +45,13 @@ if (!function_exists("get_taxonomy_array")) {
             if ($parent_term && !is_wp_error($parent_term)) {
                 $parent_id = $parent_term->term_id;
             } else {
-                return new WP_Error('invalid_parent', 'El término padre proporcionado no es válido.');
+                return new \('invalid_parent', 'El término padre proporcionado no es válido.');
             }
         }
 
 
         // Obtener términos
-        $terms = get_terms($args);
+        $terms = \get_terms($args);
 
 
 
@@ -61,7 +64,7 @@ if (!function_exists("get_taxonomy_array")) {
         }
 
         if (empty($terms)) {
-            return new WP_Error('no_terms', 'No se encontraron términos para la taxonomía.');
+            return new \('no_terms', 'No se encontraron términos para la taxonomía.');
         }
 
         if ($dimension === 0) {
