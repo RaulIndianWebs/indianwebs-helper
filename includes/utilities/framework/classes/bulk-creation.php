@@ -12,4 +12,18 @@ class IW_Helper_Bulk_Creation {
     public static function init() {
         
     }
+
+    
+
+    private static function renderForm($layout) {
+        iw_load_template("framework/bulk-creation/form", array(
+
+        ), $layout);
+    }
+
+    private static function renderField($layout) {
+        iw_load_template("framework/bulk-creation/form", array(
+            
+        ), $layout);
+    }
 }
