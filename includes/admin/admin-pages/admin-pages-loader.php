@@ -1,5 +1,6 @@
 <?php
 namespace IW_Helper\Admin;
+
 /**
  * Loader genérico para páginas de administración
  * Permite usarse desde cualquier ubicación (plugin, mu-plugin o theme)
@@ -10,7 +11,7 @@ namespace IW_Helper\Admin;
  *   new IW_Helper_Admin_Pages_Loader(get_stylesheet_directory() . '/admin/'); // Desde un tema hijo
  */
 
-class IW_Helper_Admin_Pages_Loader {
+class IW_Helper_Custom_Admin_Pages_Loader {
 
     private static array $base_dir;
 
@@ -90,7 +91,7 @@ class IW_Helper_Admin_Pages_Loader {
         if ($is_main && empty($headers['Parent Slug'])) {
             $position = $headers['Position'] ?: null;
 
-            add_menu_page(
+            \Iw_Admin_Page_Manager::add_page(
                 $headers['Page Name'],
                 $headers['Menu Title'] ?? $headers['Page Name'],
                 $headers['Capability'] ?? 'manage_options',
@@ -100,7 +101,7 @@ class IW_Helper_Admin_Pages_Loader {
                 $position
             );
 
-            add_submenu_page(
+            \Iw_Admin_Page_Manager::add_subpage(
                 $headers['Menu Slug'],
                 $headers['Page Name'],
                 '',
@@ -117,7 +118,7 @@ class IW_Helper_Admin_Pages_Loader {
             }
         } else {
             // Subpágina
-            add_submenu_page(
+            \Iw_Admin_Page_Manager::add_subpage(
                 $headers['Parent Slug'],
                 $headers['Page Name'],
                 $headers['Menu Title'] ?? $headers['Page Name'],
