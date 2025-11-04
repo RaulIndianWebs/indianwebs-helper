@@ -27,24 +27,24 @@ function iw_load_helper_modules() {
 add_action("Iw_Helper_Load_Frontend",  __NAMESPACE__ . "\\iw_load_shortcodes");
 function iw_load_shortcodes() {
 	// Add plugin shortcodes
-	load_custom_shortcodes(get_plugin_directory() . 'includes/shortcodes/');
+	\IW_Helper\Utilities\Features\Shortcodes\load_custom_shortcodes(get_plugin_directory() . 'includes/shortcodes/');
 }
 
 
 add_action("Iw_Helper_Load_Frontend",  __NAMESPACE__ . "\\iw_load_front_scritps");
 function iw_load_front_scritps() {
 	// Load CSS Variables
-	IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/css-variables.css');
+	\IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/css-variables.css');
 
 	// Load overrides
-	IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/divi-overides/');
-	IW_Scripts_Cache::cache_js_files(get_plugin_directory() . 'assets/js/divi-overides/');
-	IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/overides/');
-	IW_Scripts_Cache::cache_js_files(get_plugin_directory() . 'assets/js/overides/');
+	\IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/divi-overides/');
+	\IW_Scripts_Cache::cache_js_files(get_plugin_directory() . 'assets/js/divi-overides/');
+	\IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/overides/');
+	\IW_Scripts_Cache::cache_js_files(get_plugin_directory() . 'assets/js/overides/');
 
 	// Load CSS presets
-	IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/presets/');
-	IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/divi-presets/');
+	\IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/presets/');
+	\IW_Scripts_Cache::cache_css_files(get_plugin_directory() . 'assets/css/divi-presets/');
 }
 
 

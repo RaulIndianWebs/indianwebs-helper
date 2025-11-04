@@ -18,12 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Iniciar Loader
 add_action('plugins_loaded', "iw_helper_load");
 function iw_helper_load() {
-    require_once __DIR__."/loader.php";
+    require_once __DIR__."/includes/loader.php";
 }
 
 
 // Gestión de actualizaciones
-require 'vendor/plugin-update-checker-master';
+require_once 'vendor/plugin-update-checker-master/plugin-update-checker.php';
 
 
 $updateChecker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
