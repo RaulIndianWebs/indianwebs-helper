@@ -33,9 +33,9 @@ class IW_Helper_Custom_Admin_Pages_Loader {
     public static function register_pages() {
         foreach (self::$base_dir as $dir) {
             // Configurar directorios internos
-            $pages_dir       = self::$base_dir . 'pages/';
-            $child_pages_dir = self::$base_dir . 'child-pages/';
-            $tabs_dir        = self::$base_dir . 'tabs/';
+            $pages_dir       = $dir . 'pages/';
+            $child_pages_dir = $dir . 'child-pages/';
+            $tabs_dir        = $dir . 'tabs/';
 
 
             // 1️⃣ Páginas principales

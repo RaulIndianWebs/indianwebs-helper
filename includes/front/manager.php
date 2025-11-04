@@ -27,7 +27,7 @@ function iw_load_helper_modules() {
 add_action("Iw_Helper_Load_Frontend",  __NAMESPACE__ . "\\iw_load_shortcodes");
 function iw_load_shortcodes() {
 	// Add plugin shortcodes
-	\IW_Helper\Utilities\Features\Shortcodes\load_custom_shortcodes(get_plugin_directory() . 'includes/shortcodes/');
+	\IW_Helper\Utilities\Features\Shortcodes\load_custom_shortcodes(get_plugin_directory() . 'includes/front/shortcodes/');
 }
 
 

@@ -19,19 +19,19 @@ if (!function_exists("get_taxonomy_array")) {
 
         // Validar dimension
         if (!is_numeric($dimension)) {
-            return new \('invalid_dimension', 'El parámetro dimension debe ser numérico.');
+            return \IW_Log::error('El parámetro dimension debe ser numérico.', false);
         }
         $dimension = (int) $dimension;
 
         $taxonomy = get_taxonomy($taxonomy_name);
 
         if (!$taxonomy) {
-            return new \('taxonomy_not_found', 'No se pudo obtener la taxonomía.');
+            return \IW_Log::error('No se pudo obtener la taxonomía.', false);
         }
 
         // Validar post_type dentro de la taxonomía
         if (!isset($taxonomy->object_type) || !in_array($post_type, (array) $taxonomy->object_type)) {
-            return new \('invalid_post_type', 'El post_type no está asociado a la taxonomía.');
+            return \IW_Log::error('El post_type no está asociado a la taxonomía.', false);
         }
 
         $args = [
@@ -45,7 +45,7 @@ if (!function_exists("get_taxonomy_array")) {
             if ($parent_term && !is_wp_error($parent_term)) {
                 $parent_id = $parent_term->term_id;
             } else {
-                return new \('invalid_parent', 'El término padre proporcionado no es válido.');
+                return \IW_Log::error('El término padre proporcionado no es válido.', false);
             }
         }
 
@@ -64,7 +64,7 @@ if (!function_exists("get_taxonomy_array")) {
         }
 
         if (empty($terms)) {
-            return new \('no_terms', 'No se encontraron términos para la taxonomía.');
+            return \IW_Log::error('No se encontraron términos para la taxonomía.', false);
         }
 
         if ($dimension === 0) {
