@@ -5,7 +5,7 @@ if (!class_exists("Iw_Admin_Page_Manager")) {
         public static array $admin_pages;
         public static array $admin_subpages;
 
-        public static function add_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position) {
+        public static function add_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url=null, $position=null) {
             self::$admin_pages[] = array(
                 "page_title" => $page_title,
                 "menu_title" => $menu_title,
