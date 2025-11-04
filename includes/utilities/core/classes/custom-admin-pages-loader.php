@@ -37,7 +37,6 @@ class IW_Helper_Custom_Admin_Pages_Loader {
             $child_pages_dir = $dir . 'child-pages/';
             $tabs_dir        = $dir . 'tabs/';
 
-
             // 1️⃣ Páginas principales
             foreach (self::get_php_files($pages_dir) as $file) {
                 self::register_page($file, true, $tabs_dir);
@@ -73,7 +72,7 @@ class IW_Helper_Custom_Admin_Pages_Loader {
         }
 
         // Callback del contenido
-        $callback = static function() use ($file, $headers) {
+        $callback = static function() use ($file, $headers, $tabs_dir) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 array_walk_recursive($_POST, static function(&$item) {
                     if (is_string($item)) $item = stripslashes($item);
@@ -100,6 +99,7 @@ class IW_Helper_Custom_Admin_Pages_Loader {
                 $headers['Icon'] ?? '',
                 $position
             );
+
 
             \Iw_Admin_Page_Manager::add_subpage(
                 $headers['Menu Slug'],
