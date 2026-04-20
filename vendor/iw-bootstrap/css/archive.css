@@ -8,7 +8,7 @@
 }
 
 .iw-archive > article {
-	width: calc(calc(100% - calc(var(--iw-helper-archive-column-number) * var(--iw-helper-archive-column-gap))) / var(--iw-helper-archive-column-gap));
+	width: calc(calc(100% - calc(calc(var(--iw-helper-archive-column-number) - 1) * var(--iw-helper-archive-column-gap))) / var(--iw-helper-archive-column-gap));
 	margin: 0;
 	padding: 0;
 }
