@@ -1,0 +1,188 @@
+/* Maquetación */
+.iw-product-list-container.iw-archive {
+	--iw-archive-lg-column-count: 5;
+	--iw-archive-lg-column-gap: 30px;
+	--iw-archive-lg-row-gap: 30px;
+
+	--iw-archive-md-column-count: 3;
+	--iw-archive-md-column-gap: 30px;
+	--iw-archive-md-row-gap: 30px;
+
+	--iw-archive-sm-column-count: 2;
+	--iw-archive-sm-column-gap: 30px;
+	--iw-archive-sm-row-gap: 30px;
+}
+.iw-related-products.iw-archive {
+	--iw-archive-lg-column-count: 3;
+	--iw-archive-lg-column-gap: 30px;
+	--iw-archive-lg-row-gap: 30px;
+
+	--iw-archive-md-column-count: 2;
+	--iw-archive-md-column-gap: 30px;
+	--iw-archive-md-row-gap: 30px;
+
+	--iw-archive-sm-column-count: 1;
+	--iw-archive-sm-column-gap: 30px;
+	--iw-archive-sm-row-gap: 30px;
+}
+
+
+
+
+/* Product Item */
+.iw-product-list-container > .iw-product {
+	position: relative;
+}
+.iw-product-list-container > .iw-product a {
+	display: block;
+	height: 100%;
+	position: relative;
+	padding-bottom: 80px;
+
+	background-color: var(--iw-general-background-color-gray-primary);
+	border-color: var(--iw-general-background-color-gray-primary);
+	border-style: solid;
+	border-width: 2px 2px 0 2px;
+}
+.iw-product-list-container > .iw-product .iw-image-container {
+	position: relative;
+	width: 100%;
+	height: 300px;
+
+	background-color: var(--iw-general-background-color-gray-secondary);
+}
+.iw-product-list-container > .iw-product .iw-image-container img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.iw-product-list-container > .iw-product .iw-image-container .yith-add-to-wishlist-button-block {
+	display: block;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	position: absolute;
+	top: 10px !important;
+	right: 10px !important;
+
+	background-color: transparent !important;
+
+	z-index: 99999999;
+}
+.iw-product-list-container > .iw-product .iw-image-container .yith-add-to-wishlist-button-block .yith-wcwl-add-to-wishlist-button__label {
+	display: none !important;
+}
+.iw-product-list-container > .iw-product .iw-image-container .yith-wcwl-add-to-wishlist-button {
+	padding: 0 !important;
+	background-color: transparent !important;
+	border: 0 !important;
+}
+
+.iw-product-list-container > .iw-product .iw-image-container .product-flags {
+	position: absolute;
+	top: 10px !important;
+	left: 10px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.iw-product-list-container > .iw-product .iw-image-container .product-flags > .product-flag {
+	padding: 5px 15px;
+
+	color: white;
+	font-weight: 600;
+	font-size: 18px;
+	background-color: var(--iw-general-color-featured);
+}
+.iw-product-list-container > .iw-product .iw-image-container .product-flags > .product-flag:not(:last-of-type) {
+	margin-bottom: 15px;
+}
+
+.iw-product-list-container > .iw-product .iw-product-content,
+.iw-product-list-container > .iw-product .iw-product-footer {
+	padding: 15px;
+}
+
+.iw-product-list-container > .iw-product .iw-product-footer {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.iw-product-list-container > .iw-product .iw-product-footer > a:not(.button) {
+	display: none;
+}
+.iw-product-list-container > .iw-product .iw-product-footer .iw-product-price {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	align-items: center;
+
+	font-size: 20px;
+	font-weight: 700;
+	color: #333;
+}
+.iw-product-list-container > .iw-product .iw-product-footer .iw-product-price del {
+	font-size: 14px;
+	font-weight: 400;
+	color: #999;
+
+	margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* Pagination */
+.iw-product-list-container > .iw-pagination {
+	width: 100%;
+	margin-top: 50px;
+}
+
+.iw-product-list-container > .iw-pagination ul {
+	list-style: none;
+	padding: 0;
+
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+.iw-product-list-container > .iw-pagination ul .page-numbers {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+
+	font-size: 14px;
+	line-height: 14px;
+
+	border: 1px solid var(--iw-general-color-featured);
+	background-color: var(--iw-general-color-featured);
+	color: white !important;
+
+	transition: .3s;
+}
+.iw-product-list-container > .iw-pagination ul .page-numbers:hover,
+.iw-product-list-container > .iw-pagination ul .page-numbers.current {
+	background-color: white;
+	color: var(--iw-general-color-featured) !important;
+
+	transition: .3s;
+}

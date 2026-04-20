@@ -1,0 +1,1 @@
+<div class="iw-read-more-text"><?= esc_html($content) ?></div>

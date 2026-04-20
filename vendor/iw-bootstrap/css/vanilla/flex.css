@@ -1,0 +1,93 @@
+/* Base */
+.iw-flexbox {
+	display: flex;
+}
+
+
+
+/* Flex Flow */
+.iw-flexbox.wrap {
+	flex-wrap: wrap;
+}
+.iw-flexbox.nowrap {
+	flex-wrap: nowrap;
+}
+.iw-flexbox.row {
+	flex-direction: row;
+}
+.iw-flexbox.row-reverse {
+	flex-direction: row-reverse;
+}
+.iw-flexbox.column {
+	flex-direction: column;
+}
+.iw-flexbox.column-reverse {
+	flex-direction: column-reverse;
+}
+
+
+
+/* Justify Content */
+.iw-flexbox.justify-start {
+	justify-content: flex-start;
+}
+.iw-flexbox.justify-center {
+	justify-content: center;
+}
+.iw-flexbox.justify-end {
+	justify-content: flex-end;
+}
+.iw-flexbox.justify-between {
+	justify-content: space-between;
+}
+.iw-flexbox.justify-around {
+	justify-content: space-around;
+}
+
+
+
+/* Align Items */
+.iw-flexbox.align-start {
+	align-items: flex-start;
+}
+.iw-flexbox.align-center {
+	align-items: center;
+}
+.iw-flexbox.align-end {
+	align-items: flex-end;
+}
+.iw-flexbox.align-stretch {
+	align-items: stretch;
+}
+
+
+
+/* Flex Sizing */
+.iw-flexbox.all-grow > * {
+	flex-grow: 1;
+}
+.iw-flexbox.all-shrink > * {
+	flex-shrink: 1;
+}
+.iw-flexbox.all-adapt > * {
+	flex: 1;
+}
+
+
+/* Gap */
+.iw-flexbox.gap-1 {
+	gap: 10px;
+}
+.iw-flexbox.gap-2 {
+	gap: 20px;
+}
+.iw-flexbox.gap-3 {
+	gap: 30px;
+}
+.iw-flexbox.gap-4 {
+	gap: 40px;
+}
+.iw-flexbox.gap-5 {
+	gap: 50px;
+}
+

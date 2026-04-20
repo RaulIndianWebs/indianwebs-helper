@@ -1,0 +1,33 @@
+:root {
+	--iw-contact-info-icons-size: 20px;
+}
+.iw-contact-info {
+	padding-left: 0 !important;
+}
+.iw-contact-info li {
+	list-style: none;
+}
+.iw-contact-info a::before {
+	content: "";
+
+	display: inline-block;
+	width: var(--iw-contact-info-icons-size);
+	height: var(--iw-contact-info-icons-size);
+	margin-right: 10px;
+
+	background-size: contain;
+	background-position: center;
+	background-position: center left;
+}
+.iw-contact-info a.email::before {
+	background-image: url("/wp-content/plugins/indianwebs_helper/assets/img/icons/email.png");
+}
+.iw-contact-info a.phone::before {
+	background-image: url("/wp-content/plugins/indianwebs_helper/assets/img/icons/phone.png");
+}
+.iw-contact-info a.address::before {
+	background-image: url("/wp-content/plugins/indianwebs_helper/assets/img/icons/address.png");
+}
+
+
+

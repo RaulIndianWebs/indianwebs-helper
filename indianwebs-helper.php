@@ -3,7 +3,7 @@
 Plugin Name: IndianWebs Helper
 Plugin URI: https://www.indianwebs.com/
 Description: Plugin para la implementación adicional de la página.
-Version: 3.0
+Version: 6.2
 Author: IndianWebs L'Hospitalet
 Author URI: https://www.indianwebs.com/
 Text Domain: iw-helper
@@ -12,36 +12,25 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-// Iniciar Loader
-add_action('plugins_loaded', "iw_helper_load");
-function iw_helper_load() {
-    require_once __DIR__."/includes/loader.php";
-}
+define('IW_HELPER_DIR', plugin_dir_path(__FILE__));
+define('IW_HELPER_URL', plugin_dir_url(__FILE__));
+
+require_once IW_HELPER_DIR.'/includes/file-management.php';
+include_php_files(IW_HELPER_DIR . '/includes/functions/');
+include_php_files(IW_HELPER_DIR . '/includes/classes/');
 
 
-// Gestión de actualizaciones
-require_once 'vendor/plugin-update-checker-master/plugin-update-checker.php';
 
-
-$updateChecker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
-    'https://github.com/RaulDominguezSalgado/indianwebs_helper',
-    __FILE__,
-    'iw-helper'
-);
-
-
-// Gestión al desinstalar
-register_uninstall_hook(__FILE__, 'iw_helper_uninstall');
-function iw_helper_uninstall() {
-    Iw_Helper_DB_Manager::resetAll();
-}
+/* Require features */
+require_once plugin_dir_path(__FILE__) . 'loader.php';
 
 
 
 
+add_action('wp_footer', ['IW_Scripts_Cache', 'print_cached_css'], 999999);
+add_action('wp_footer', ['IW_Scripts_Cache', 'print_cached_js'], 999999);
 
 
 

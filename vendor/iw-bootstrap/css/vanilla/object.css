@@ -1,0 +1,46 @@
+.iw-object {
+
+}
+.iw-object.image-cover img,
+.iw-object.image-contain img {
+	display: block !important;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.iw-object.image-cover img {
+	object-fit: cover !important;
+}
+
+.iw-object.image-contain img {
+	object-fit: contain !important;
+}
+
+
+.iw-object.image-position-top-left img {
+	object-position: top left !important;
+}
+.iw-object.image-position-top-center img {
+	object-position: top center !important;
+}
+.iw-object.image-position-top-right img {
+	object-position: top right !important;
+}
+.iw-object.image-position-center-left img {
+	object-position: center left !important;
+}
+.iw-object.image-position-center img {
+	object-position: center !important;
+}
+.iw-object.image-position-center-right img {
+	object-position: center right !important;
+}
+.iw-object.image-position-bottom-left img {
+	object-position: bottom left !important;
+}
+.iw-object.image-position-bottom-center img {
+	object-position: bottom center !important;
+}
+.iw-object.image-position-bottom-right img {
+	object-position: bottom right !important;
+}

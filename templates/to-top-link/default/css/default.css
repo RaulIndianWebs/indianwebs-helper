@@ -1,0 +1,44 @@
+:root {
+	--iw-to-top-link-top: initial;
+	--iw-to-top-link-right: 20px;
+	--iw-to-top-link-bottom: 20px;
+	--iw-to-top-link-left: initial;
+
+	--iw-to-top-link-container-size: 50px;
+	--iw-to-top-link-icon-size: 35px;
+
+	--iw-to-top-link-color-primary: var(--iw-general-color-primary);
+	--iw-to-top-link-color-secondary: var(--iw-general-color-secondary);
+}
+
+#iw-to-top-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: var(--iw-to-top-link-container-size);
+	height: var(--iw-to-top-link-container-size);
+
+	position: fixed;
+	bottom: var(--iw-to-top-link-bottom);
+	right: var(--iw-to-top-link-right);
+	z-index: 20;
+
+	color: var(--iw-to-top-link-color-primary);
+	background-color: var(--iw-to-top-link-color-secondary);
+	border: 1px solid var(--iw-to-top-link-color-secondary);
+	border-radius: 50%;
+
+	font-size: var(--iw-to-top-link-icon-size);
+
+	cursor: pointer;
+	user-select: none;
+
+	transition: .3s;
+}
+
+#iw-to-top-link:hover {
+	color: var(--iw-to-top-link-color-secondary);
+	background-color: var(--iw-to-top-link-color-primary);
+
+	transition: .3s;
+}

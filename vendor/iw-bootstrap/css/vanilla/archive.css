@@ -1,0 +1,98 @@
+/* Maquetación CSS para los archivos de PT */
+.iw-archive {
+	--iw-archive-df-column-gap: 30px;
+	--iw-archive-df-row-gap: 30px;
+	--iw-archive-df-column-count: 3;
+
+	--iw-archive-sm-column-gap: 0;
+	--iw-archive-sm-row-gap: 30px;
+	--iw-archive-sm-column-count: 1;
+
+	--iw-archive-md-column-gap: 30px;
+	--iw-archive-md-row-gap: 30px;
+	--iw-archive-md-column-count: 1;
+
+	--iw-archive-lg-column-gap: 30px;
+	--iw-archive-lg-row-gap: 30px;
+	--iw-archive-lg-column-count: 1;
+
+
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	gap: var(--iw-archive-df-row-gap) var(--iw-archive-df-column-gap);
+}
+
+.iw-archive > * {
+	width: calc(calc(100% - calc(var(--iw-archive-df-column-gap) * calc(var(--iw-archive-df-column-count) - 1))) / var(--iw-archive-df-column-count));
+	margin: 0;
+}
+
+
+
+
+
+/* Presets */
+.iw-archive.preset-2,
+.iw-archive.preset-3,
+.iw-archive.preset-4,
+.iw-archive.preset-5,
+.iw-archive.preset-6 {
+	--iw-archive-md-column-gap: 30px;
+	--iw-archive-md-row-gap: 30px;
+	--iw-archive-md-column-count: 2;
+}
+.iw-archive.preset-2 {
+	--iw-archive-column-gap: 30px;
+	--iw-archive-row-gap: 30px;
+	--iw-archive-column-count: 2;
+}
+.iw-archive.preset-3 {
+	--iw-archive-column-gap: 30px;
+	--iw-archive-row-gap: 30px;
+	--iw-archive-column-count: 3;
+}
+.iw-archive.preset-4 {
+	--iw-archive-column-gap: 30px;
+	--iw-archive-row-gap: 30px;
+	--iw-archive-column-count: 4;
+}
+.iw-archive.preset-5 {
+	--iw-archive-column-gap: 30px;
+	--iw-archive-row-gap: 30px;
+	--iw-archive-column-count: 5;
+}
+.iw-archive.preset-6 {
+	--iw-archive-column-gap: 30px;
+	--iw-archive-row-gap: 30px;
+	--iw-archive-column-count: 6;
+}
+
+
+
+
+
+
+/* Responsive */
+@media (max-width: 480px) {
+	.iw-archive {
+		--iw-archive-df-column-gap: var(--iw-archive-sm-column-gap);
+		--iw-archive-df-row-gap: var(--iw-archive-sm-row-gap);
+		--iw-archive-df-column-count: var(--iw-archive-sm-column-count);
+	}
+}
+@media (min-width: 481px) and (max-width: 980px) {
+	.iw-archive {
+		--iw-archive-df-column-gap: var(--iw-archive-md-column-gap);
+		--iw-archive-df-row-gap: var(--iw-archive-md-row-gap);
+		--iw-archive-df-column-count: var(--iw-archive-md-column-count);
+	}
+}
+@media (min-width: 981px) {
+	.iw-archive {
+		--iw-archive-df-column-gap: var(--iw-archive-lg-column-gap);
+		--iw-archive-df-row-gap: var(--iw-archive-lg-row-gap);
+		--iw-archive-df-column-count: var(--iw-archive-lg-column-count);
+	}
+}

@@ -1,7 +1,7 @@
 :root {
 	/* General */
-	--iw-form-border-color-initial: var(--iw-general-color-primary);
-	--iw-form-border-color-featured: var(--iw-general-color-featured);
+	--iw-form-border-color-initial: black;
+	--iw-form-border-color-featured: var(--iw-general-color-primary);
 
 	--iw-form-label-color: black;
 	--iw-form-label-background-color: transparent;
@@ -9,11 +9,11 @@
 	--iw-form-input-color: black;
 	--iw-form-input-background-color: white;
 
-	--iw-form-checkbox-color: var(--iw-general-color-featured);
+	--iw-form-checkbox-color: var(--iw-general-color-primary);
 
 	--iw-form-button-primary-color: var(--iw-general-color-secondary);
-	--iw-form-button-secondary-color: var(--iw-general-color-featured);
-	--iw-form-button-border-color: var(--iw-general-color-featured);
+	--iw-form-button-secondary-color: var(--iw-general-color-primary);
+	--iw-form-button-border-color: var(--iw-general-color-primary);
 
 	--iw-form-transitions: var(--iw-general-transitions);
 
@@ -63,7 +63,7 @@
 	flex-flow: column nowrap;
 	justify-content: flex-start;
 	align-items: stretch;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 .wpcf7-form > fieldset.hidden {
 	display: none;
@@ -72,32 +72,23 @@
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 1.3em;
+	margin-bottom: 15px;
 }
 .wpcf7-form > fieldset > div {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: stretch;
+	gap: 30px;
+	margin-bottom: 30px;
 }
 .wpcf7-form > fieldset > div > p {
 	width: 350px;
 	max-width: 100%;
 	flex-grow: 1;
-	margin: 2%;
+	margin: 0 !important;
 	padding-bottom: 0;
 }
-.wpcf7-form > fieldset > div > p:first-of-type {
-	margin-left: 0;
-}
-.wpcf7-form > fieldset > div > p:last-of-type {
-	margin-right: 0;
-}
-@media (max-width: 920px) {
-	.wpcf7-form > fieldset > div > p {
-		margin: 2% 0;
-	}
-}
-
 
 /* Overide CF7 */
 .wpcf7-form br {
@@ -210,56 +201,68 @@
 
 
 /* WooCommerce */
-form[class^="woocommerce"] label,
-.wc-block-checkout__form label {
+.iw-woocommerce-field-container label,
+.wc_payment_method label,
+.shipping_method label,
+.woocommerce-terms-and-conditions-wrapper label,
+.woocommerce-form-row label {
 	user-select: none;
 	cursor: pointer;
 	background-color: var(--iw-woo-form-label-background-color);
 	color: var(--iw-woo-form-label-color);
 	transition: var(--iw-woo-form-transitions);
 }
-form[class^="woocommerce"] input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]),
-form[class^="woocommerce"] select,
-form[class^="woocommerce"] textarea,
-.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]),
-.wc-block-checkout__form select,
-.wc-block-checkout__form textarea {
+
+.input-text,
+.iw-woocommerce-field-container .input-text,
+.select2-selection,
+.iw-woocommerce-field-container .select2-selection,
+.woocommerce-form-row .select2-selection {
 	width: 100%;
 	min-height: 40px;
-	border: 1px solid var(--iw-woo-form-border-color-initial);
+	border: 1px solid var(--iw-woo-form-border-color-initial) !important;
 	padding: 10px;
-	color: var(--iw-woo-form-input-color);
-	background-color: var(--iw-woo-form-input-background-color);
-	transition: var(--iw-woo-form-transitions);
+	color: var(--iw-woo-form-input-color) !important;
+	background-color: var(--iw-woo-form-input-background-color) !important;
+	transition: var(--iw-woo-form-transitions) !important;
 }
-.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]),
-.wc-block-checkout__form select,
-.wc-block-checkout__form textarea {
-	padding: 20px 10px 10px;
+
+.input-text:hover,
+.input-text:focus,
+.select2-selection:hover,
+.select2-selection:focus,
+.iw-woocommerce-field-container .input-text:hover,
+.iw-woocommerce-field-container .input-text:focus,
+.iw-woocommerce-field-container .select2-selection:hover,
+.iw-woocommerce-field-container .select2-selection:focus,
+.woocommerce-form-row .input-text:hover,
+.woocommerce-form-row .input-text:focus,
+.woocommerce-form-row .select2-selection:hover,
+.woocommerce-form-row .select2-selection:focus {
+	border-color: var(--iw-woo-form-border-color-featured) !important;
+	transition: var(--iw-woo-form-transitions) !important;
 }
-form[class^="woocommerce"] input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):hover,
-form[class^="woocommerce"] select:hover,
-form[class^="woocommerce"] textarea:hover,
-form[class^="woocommerce"] input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):focus,
-form[class^="woocommerce"] select:focus,
-form[class^="woocommerce"] textarea:focus,
-.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):hover,
-.wc-block-checkout__form select:hover,
-.wc-block-checkout__form textarea:hover,
-.wc-block-checkout__form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):focus,
-.wc-block-checkout__form select:focus,
-.wc-block-checkout__form textarea:focus {
-	border-color: var(--iw-woo-form-border-color-featured);
-	transition: var(--iw-woo-form-transitions);
-}
-form[class^="woocommerce"] textarea,
-.wc-block-checkout__form textarea {
+
+.iw-woocommerce-field-container textarea,
+.woocommerce-form-row textarea {
 	resize: vertical;
 }
-form[class^="woocommerce"] input[type="checkbox"]::after,
-form[class^="woocommerce"] input[type="radio"]::after,
-.wc-block-checkout__form input[type="checkbox"]::after,
-.wc-block-checkout__form input[type="radio"]::after {
+
+
+
+
+
+/* Checkbox and radio */
+.iw-woocommerce-field-container input[type="checkbox"]::after,
+.iw-woocommerce-field-container input[type="radio"]::after,
+.wc_payment_method input[type="checkbox"]::after,
+.wc_payment_method input[type="radio"]::after,
+input.shipping_method[type="checkbox"]::after,
+input.shipping_method[type="radio"]::after,
+.woocommerce-terms-and-conditions-wrapper input[type="checkbox"]::after,
+.woocommerce-terms-and-conditions-wrapper input[type="radio"]::after,
+.woocommerce-form-row input[type="checkbox"]::after,
+.woocommerce-form-row input[type="radio"]::after {
 	content: "";
 	display: inline-block;
 	width: 13px;
@@ -269,28 +272,41 @@ form[class^="woocommerce"] input[type="radio"]::after,
 	background-color: white;
 	transition: var(--iw-woo-form-transitions);
 }
-form[class^="woocommerce"] input[type="checkbox"]:checked::after,
-form[class^="woocommerce"] input[type="radio"]:checked::after,
-.wc-block-checkout__form input[type="checkbox"]:checked::after,
-.wc-block-checkout__form input[type="radio"]:checked::after {
+.iw-woocommerce-field-container input[type="checkbox"]:checked::after,
+.iw-woocommerce-field-container input[type="radio"]:checked::after,
+.wc_payment_method input[type="checkbox"]:checked::after,
+.wc_payment_method input[type="radio"]:checked::after,
+input.shipping_method[type="checkbox"]:checked::after,
+input.shipping_method[type="radio"]:checked::after,
+.woocommerce-terms-and-conditions-wrapper input[type="checkbox"]:checked::after,
+.woocommerce-terms-and-conditions-wrapper input[type="radio"]:checked::after,
+.woocommerce-form-row input[type="checkbox"]:checked::after,
+.woocommerce-form-row input[type="radio"]:checked::after {
 	background-color: var(--iw-woo-form-checkbox-color);
 	transition: var(--iw-woo-form-transitions);
 }
-form[class^="woocommerce"] input[type="radio"],
-.wc-block-checkout__form input[type="radio"] {
+.iw-woocommerce-field-container input[type="radio"]::after,
+.wc_payment_method input[type="radio"]::after,
+input.shipping_method[type="radio"]::after,
+.woocommerce-terms-and-conditions-wrapper input[type="radio"]::after,
+.woocommerce-form-row input[type="radio"]::after {
 	border-radius: 50%;
 }
 
 
-form[class^="woocommerce"] input[type="submit"],
-form[class^="woocommerce"] input[type="clear"],
-form[class^="woocommerce"] input[type="file"],
-form[class^="woocommerce"] input[type="button"],
-.wc-block-checkout__form input[type="submit"],
-.wc-block-checkout__form input[type="clear"],
-.wc-block-checkout__form input[type="file"],
-.wc-block-checkout__form input[type="button"],
-.woocommerce-button {
+
+/* Buttons */
+.iw-woocommerce-field-container input[type="submit"],
+.iw-woocommerce-field-container input[type="clear"],
+.iw-woocommerce-field-container input[type="file"],
+.iw-woocommerce-field-container input[type="button"],
+.woocommerce-form-row input[type="submit"],
+.woocommerce-form-row input[type="clear"],
+.woocommerce-form-row input[type="file"],
+.woocommerce-form-row input[type="button"],
+.woocommerce-button,
+.woocommerce-Button,
+.woocommerce_checkout_place_order {
 	display: inline-block !important;
 	border: 1px solid var(--iw-woo-form-button-secondary-color) !important;
 	background-color: var(--iw-woo-form-button-secondary-color) !important;
@@ -301,30 +317,39 @@ form[class^="woocommerce"] input[type="button"],
 	cursor: pointer !important;
 	transition: var(--iw-woo-form-transitions) !important;
 }
-form[class^="woocommerce"] input[type="submit"]:not(:disabled):hover,
-form[class^="woocommerce"] input[type="clear"]:not(:disabled):hover,
-form[class^="woocommerce"] input[type="file"]:not(:disabled):hover,
-form[class^="woocommerce"] input[type="button"]:not(:disabled):hover,
-.wc-block-checkout__form input[type="submit"]:not(:disabled):hover,
-.wc-block-checkout__form input[type="clear"]:not(:disabled):hover,
-.wc-block-checkout__form input[type="file"]:not(:disabled):hover,
-.wc-block-checkout__form input[type="button"]:not(:disabled):hover,
-.woocommerce-button:not(:disabled):hover {
+.iw-woocommerce-field-container input[type="submit"]:not(:disabled):hover,
+.iw-woocommerce-field-container input[type="clear"]:not(:disabled):hover,
+.iw-woocommerce-field-container input[type="file"]:not(:disabled):hover,
+.iw-woocommerce-field-container input[type="button"]:not(:disabled):hover,
+.woocommerce-form-row input[type="submit"]:not(:disabled):hover,
+.woocommerce-form-row input[type="clear"]:not(:disabled):hover,
+.woocommerce-form-row input[type="file"]:not(:disabled):hover,
+.woocommerce-form-row input[type="button"]:not(:disabled):hover,
+.woocommerce-button:not(:disabled):hover,
+.woocommerce-Button:not(:disabled):hover,
+.woocommerce_checkout_place_order:not(:disabled):hover {
 	background-color: var(--iw-woo-form-button-primary-color) !important;
 	color: var(--iw-woo-form-button-secondary-color) !important;
 	transition: var(--iw-woo-form-transitions) !important;
 }
-form[class^="woocommerce"] input[type="submit"]:disabled,
-form[class^="woocommerce"] input[type="clear"]:disabled,
-form[class^="woocommerce"] input[type="file"]:disabled,
-form[class^="woocommerce"] input[type="button"]:disabled,
-.wc-block-checkout__form input[type="submit"]:disabled,
-.wc-block-checkout__form input[type="clear"]:disabled,
-.wc-block-checkout__form input[type="file"]:disabled,
-.wc-block-checkout__form input[type="button"]:disabled,
-.woocommerce-button:disabled {
+.iw-woocommerce-field-container input[type="submit"]:disabled,
+.iw-woocommerce-field-container input[type="clear"]:disabled,
+.iw-woocommerce-field-container input[type="file"]:disabled,
+.iw-woocommerce-field-container input[type="button"]:disabled,
+.woocommerce-form-row input[type="submit"]:disabled,
+.woocommerce-form-row input[type="clear"]:disabled,
+.woocommerce-form-row input[type="file"]:disabled,
+.woocommerce-form-row input[type="button"]:disabled,
+.woocommerce-button:disabled,
+.woocommerce-button:disabled,
+.woocommerce_checkout_place_order:disabled {
 	opacity: .5 !important;
 	transition: var(--iw-woo-form-transitions) !important;
 }
 
+.woocommerce-button::after,
+.woocommerce-Button::after,
+.woocommerce_checkout_place_order::after {
+	display: none;
+}
 

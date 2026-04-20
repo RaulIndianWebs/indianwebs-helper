@@ -1,0 +1,65 @@
+/* Maquetación */
+.iw-category-list-container.iw-archive {
+	--iw-archive-lg-column-count: 7 !important;
+	--iw-archive-lg-column-gap: 30px !important;
+	--iw-archive-lg-row-gap: 30px !important;
+
+	--iw-archive-md-column-count: 3 !important;
+	--iw-archive-md-column-gap: 30px !important;
+	--iw-archive-md-row-gap: 30px !important;
+
+	--iw-archive-sm-column-count: 2 !important;
+	--iw-archive-sm-column-gap: 30px !important;
+	--iw-archive-sm-row-gap: 30px !important;
+}
+
+
+
+
+
+/* category Item */
+.iw-category-list-container > .iw-category {
+	position: relative;
+}
+.iw-category-list-container > .iw-category a {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	height: 100%;
+
+	position: relative;
+
+	background-color: var(--iw-general-background-color-gray-primary);
+	border-color: var(--iw-general-background-color-gray-primary);
+	border-style: solid;
+	border-width: 2px 2px 0 2px;
+}
+.iw-category-list-container > .iw-category .iw-image-container {
+	position: relative;
+	width: 100%;
+	height: 150px;
+
+	background-color: var(--iw-general-background-color-gray-secondary);
+}
+.iw-category-list-container > .iw-category .iw-image-container img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+
+.iw-category-list-container > .iw-category .iw-category-content,
+.iw-category-list-container > .iw-category .iw-category-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	flex-grow: 1;
+
+	text-align: center;
+}

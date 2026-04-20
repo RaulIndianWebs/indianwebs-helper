@@ -1,16 +1,4 @@
 :root {
-	/* General colors */
-	--iw-general-color-primary: #ccc;
-	--iw-general-color-secondary: #fff;
-	--iw-general-color-featured: #003e91;
-
-	/* General Background Colors */
-	--iw-general-background-color-primary: #fff;
-	--iw-general-background-color-secondary: #001363;
-	--iw-general-background-color-gray-primary: #d9d9d9;
-	--iw-general-background-color-gray-secondary: #f7f7f7;
-
-
 	/* General transitions */
 	--iw-general-transitions-delay: 0s;
 	--iw-general-transitions-duration: .3s;

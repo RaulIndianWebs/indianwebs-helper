@@ -1,0 +1,19 @@
+/* Styles */
+.et_pb_menu ul.et-menu {
+	gap: 20px;
+}
+.et_pb_menu ul.et-menu > li {
+	margin-top: 0 !important;
+	display: flex !important;
+	flex-flow: row nowrap !important;
+	justify-content: center !important;
+	align-items: center !important;
+	padding: 0 !important;
+}
+.et_pb_menu ul.et-menu > li > a {
+	margin-top: 0 !important;
+	padding: 5px 20px !important;
+}
+.et_pb_menu li.menu-item-has-children > a::after {
+	top: 5px !important;
+}
