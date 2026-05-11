@@ -8,6 +8,7 @@
 
 	--iw-form-input-color: black;
 	--iw-form-input-background-color: white;
+	--iw-form-input-border-radius: 0px;
 
 	--iw-form-checkbox-color: var(--iw-general-color-primary);
 
@@ -23,6 +24,7 @@
 
 	--iw-cf7-input-color: var(--iw-form-input-color);
 	--iw-cf7-input-background-color: var(--iw-form-input-background-color);
+	--iw-cf7-input-border-radius: 0px;
 
 	--iw-cf7-checkbox-color: var(--iw-form-checkbox-color);
 
@@ -41,6 +43,7 @@
 
 	--iw-woo-form-input-color: var(--iw-form-input-color);
 	--iw-woo-form-input-background-color: var(--iw-form-input-background-color);
+	--iw-woo-form-input-border-radius: 0px;
 
 	--iw-woo-form-checkbox-color: var(--iw-form-checkbox-color);
 
@@ -107,6 +110,7 @@
 	padding: 10px;
 	color: var(--iw-cf7-input-color);
 	background-color: var(--iw-cf7-input-background-color);
+	border-radius: var(--iw-cf7-input-border-radius);
 	transition: var(--iw-cf7-transitions);
 }
 .wpcf7-form input:not(input[type="radio"]):not(input[type="checkbox"]):not(input[type="submit"]):not(input[type="clear"]):not(input[type="file"]):not(input[type="hidden"]):hover,
@@ -123,6 +127,7 @@
 }
 .wpcf7-form textarea {
 	resize: vertical;
+	border-radius: 0;
 }
 .wpcf7-form input[type="checkbox"]::after,
 .wpcf7-form input[type="radio"]::after {
@@ -224,6 +229,7 @@
 	padding: 10px;
 	color: var(--iw-woo-form-input-color) !important;
 	background-color: var(--iw-woo-form-input-background-color) !important;
+	border-radius: var(--iw-woo-form-input-border-radius);
 	transition: var(--iw-woo-form-transitions) !important;
 }
 
@@ -246,6 +252,7 @@
 .iw-woocommerce-field-container textarea,
 .woocommerce-form-row textarea {
 	resize: vertical;
+	border-radius: 0;
 }
 
 
