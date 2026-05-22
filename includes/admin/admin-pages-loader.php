@@ -9,10 +9,11 @@ class IW_Helper_Admin_Pages_Loader {
     private $child_pages_dir;
     private $tabs_dir;
 
-    public function __construct() {
-        $this->pages_dir       = plugin_dir_path(__FILE__) . 'pages/';
-        $this->child_pages_dir = plugin_dir_path(__FILE__) . 'child-pages/';
-        $this->tabs_dir        = plugin_dir_path(__FILE__) . 'tabs/';
+    public function __construct($root=null) {
+    	if ($root == null) $root = plugin_dir_path(__FILE__);
+        $this->pages_dir       = $root . 'pages/';
+        $this->child_pages_dir = $root . 'child-pages/';
+        $this->tabs_dir        = $root . 'tabs/';
         add_action('admin_menu', [$this, 'register_pages']);
     }
 
@@ -181,4 +182,4 @@ class IW_Helper_Admin_Pages_Loader {
 
 // Inicializar loader del plugin IW Helper
 new IW_Helper_Admin_Pages_Loader();
-
+new IW_Helper_Admin_Pages_Loader(get_custom_helper_directory()."/includes/admin/");
