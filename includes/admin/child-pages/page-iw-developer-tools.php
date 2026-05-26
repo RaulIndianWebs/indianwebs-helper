@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
     }
 
     $new_config = [
-        'wp-debug'           => isset($_POST['wp-debug']) ? 1 : 0,
-        'wp-debug-display'   => isset($_POST['wp-debug-display']) ? 1 : 0,
-        'wp-debug-log'       => isset($_POST['wp-debug-log']) ? 1 : 0,
+        'wp-debug'              => isset($_POST['wp-debug']) ? 1 : 0,
+        'wp-debug-display'      => isset($_POST['wp-debug-display']) ? 1 : 0,
+        'wp-debug-log'          => isset($_POST['wp-debug-log']) ? 1 : 0,
+        'iw-mail-notification'  => isset($_POST['iw-mail-notification']) ? 1 : 0,
     ];
 
     savePluginOptions($option_slug, $new_config);
@@ -67,6 +68,20 @@ $config = is_array($config) ? $config : [];
                     <input type="checkbox" name="wp-debug-log" value="1"
                         <?php checked($config['wp-debug-log'] ?? 0, 1); ?>>
                     El log está en /wp-content/debug.log
+                </label>
+            </td>
+        </tr>
+    </table>
+
+    <table class="form-table">
+
+        <tr>
+            <th scope="row">Notificaciones por mantenimiento</th>
+            <td>
+                <label>
+                    <input type="checkbox" name="iw-mail-notification" value="1"
+                        <?php checked($config['iw-mail-notification'] ?? 0, 1); ?>>
+                        Recibir notiifcacinoes diarias conforme el modo mantenimiento está activado
                 </label>
             </td>
         </tr>
