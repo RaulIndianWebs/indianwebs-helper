@@ -30,7 +30,6 @@ if (!empty($dev_tools['wp-debug-log'])) {
 
 
 add_action('admin_post_toggle_dev_tool', function() {
-
     // Solo admins
     if (!current_user_can('manage_options')) {
         wp_die('No tienes permisos');
@@ -84,7 +83,7 @@ add_action('admin_bar_menu', function($wp_admin_bar) {
     $wp_admin_bar->add_node([
         'id'    => 'iw-dev-tools',
         'title' => 'Developer Tools',
-        'href'  => false,
+        'href'  => "/wp-admin/admin.php?page=iw-developer-tools",
         'meta'  => ['class' => 'iw-dev-tools']
     ]);
 
