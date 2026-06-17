@@ -5,7 +5,7 @@
  * Version:     1.0
  * Author:      Tu Nombre
  */
-if (!getPluginOptions("wordpress-config")["enable_image_meta"]) exit;
+if (!getPluginOptions("wordpress-config")["enable_image_meta"]) return;
 // 1) Filtro WP: wp_get_attachment_image_attributes
 add_filter( 'wp_get_attachment_image_attributes', function( $attr, $attachment, $size ) {
     if ( is_numeric( $attachment ) ) {

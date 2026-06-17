@@ -1,5 +1,5 @@
 <?php
-if (!getPluginOptions("wordpress-config")["disable_comments"]) exit;
+if (!getPluginOptions("wordpress-config")["disable_comments"]) return;
 add_action('admin_init', function () {
     // Redirect any user trying to access comments page
     global $pagenow;
