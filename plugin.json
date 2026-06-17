@@ -1,14 +1,13 @@
 {
 	"name": "IndianWebs Helper",
+	"slug": "indianwebs-helper",
 	"version": "6.0",
-	"download_url": "https://github.com/RaulIndianWebs/indianwebs-helper/",
-
+	"download_url": "https://github.com/RaulIndianWebs/indianwebs-helper/archive/refs/tags/test-releases.zip",
 	"homepage": "https://indianwebs.com/",
-	"requires": "4.5",
-	"tested": "4.8",
-	"last_updated": "2017-01-01 16:17:00",
-	"upgrade_notice": "Here's why you should upgrade...",
-
+	"requires": "5.0",
+	"tested": "6.5",
+	"last_updated": "2026-06-17 12:00:00",
+	"upgrade_notice": "Nueva versión disponible.",
 	"author": "Raúl Domínguez",
-	"author_homepage": "https://domrav.net/",
-}
+	"author_homepage": "https://domrav.net/"
+  }
