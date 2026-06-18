@@ -145,7 +145,7 @@
 	background-color: var(--iw-cf7-checkbox-color);
 	transition: var(--iw-cf7-transitions);
 }
-.wpcf7-form input[type="radio"] {
+.wpcf7-form input[type="radio"]::after {
 	border-radius: 50%;
 }
 .wpcf7-form .wpcf7-acceptance .wpcf7-list-item {
