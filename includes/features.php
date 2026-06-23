@@ -5,6 +5,11 @@
 // Load Cookie Manager
 include_php_files(get_plugin_directory() . 'includes/cookies-manager/');
 
+// Load Bulk Creation
+include_php_files(get_plugin_directory() . 'includes/bulk-creation/main.php');
+
+
+
 
 
 /**
