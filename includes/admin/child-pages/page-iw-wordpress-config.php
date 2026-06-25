@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'disable_comments'        => isset($_POST['disable_comments']) ? 1 : 0,
         'disable_blog_posts'        => isset($_POST['disable_blog_posts']) ? 1 : 0,
         'disable_divi_cpt'        => isset($_POST['disable_divi_cpt']) ? 1 : 0,
-        'enable_image_meta'       => isset($_POST['enable_image_meta']) ? 1 : 0,
         'disable_core_updates'    => isset($_POST['disable_core_updates']) ? 1 : 0,
         'disable_plugin_updates'  => isset($_POST['disable_plugin_updates']) ? 1 : 0,
         'disable_theme_updates'   => isset($_POST['disable_theme_updates']) ? 1 : 0,
@@ -75,17 +74,6 @@ wp_nonce_field('iw_save_config');
                     <input type="checkbox" name="disable_divi_cpt" value="1"
                         <?php checked($config['disable_divi_cpt'] ?? 0, 1); ?>>
                     Eliminar Custom Post Types creados por Divi
-                </label>
-            </td>
-        </tr>
-
-        <tr>
-            <th scope="row">Compatibilidad meta en imágenes</th>
-            <td>
-                <label>
-                    <input type="checkbox" name="enable_image_meta" value="1"
-                        <?php checked($config['enable_image_meta'] ?? 0, 1); ?>>
-                    Habilitar campos meta personalizados para imágenes
                 </label>
             </td>
         </tr>
