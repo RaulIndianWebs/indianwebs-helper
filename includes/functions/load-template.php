@@ -29,8 +29,8 @@ if (!function_exists('iw_load_template')) {
         }
 
         // Cachear assets según layout
-        IW_Scripts_Cache::cache_css_files($template_path . "css/");
-        IW_Scripts_Cache::cache_js_files($template_path . "js/");
+        IW_Scripts_Cache::cache_css_files($template_path);
+        IW_Scripts_Cache::cache_js_files($template_path);
 
         ob_start();
 
