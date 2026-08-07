@@ -4,48 +4,44 @@ $option_slug = 'developer-tools';
 
 function is_maintenance_mode() {
     $options = get_option('maintenance_options');
-    if (!empty($options) && isset($options['state']) && $options['state'] == 1) {
-        return true;
-    }
-    return false;
+    return !empty($options['state']) && (int) $options['state'] === 1;
 }
 
-$active = getPluginOptions($option_slug)["iw-mail-notification"];
-
-add_action('plugins_loaded', function () use ($active) {
-    if ($active && !wp_next_scheduled('daily_maintenance_check_event')) {
-        wp_schedule_event(time(), 'daily', 'daily_maintenance_check_event');
+function iw_maybe_send_maintenance_notice() {
+    if (!getPluginOptions($option_slug)['iw-mail-notification']) {
+        return;
     }
 
-    if (!$active) {
-        wp_clear_scheduled_hook('daily_maintenance_check_event');
+    $last_check = get_transient('iw_maintenance_last_check');
+    $one_day    = DAY_IN_SECONDS;
+
+    if ($last_check !== false && (time() - $last_check) < $one_day) {
+        return;
     }
 
-});
+    set_transient('iw_maintenance_last_check', time(), $one_day * 2);
 
-
-add_action('daily_maintenance_check_event', function () {
-    if (is_maintenance_mode()) {
-        $admin_email = get_option('admin_email');
-
-        $site_title = get_bloginfo('name');
-        $site_url   = get_bloginfo('url');
-
-        $subject = 'Sitio en Mantenimiento';
-
-        $message = "¡Atención! El sitio está actualmente en modo mantenimiento.\n\n";
-        $message .= "Sitio: " . $site_title . "\n";
-        $message .= "URL: " . $site_url . "\n\n";
-        $message .= "Por favor, revisa que todo esté bien.";
-
-        wp_mail($admin_email, $subject, $message);
+    if (!is_maintenance_mode()) {
+        return;
     }
-});
 
+    $admin_email = get_option('admin_email');
+    $site_title  = get_bloginfo('name');
+    $site_url    = get_bloginfo('url');
 
-register_deactivation_hook(__FILE__, function () {
-    $timestamp = wp_next_scheduled('daily_maintenance_check_event');
-    if ($timestamp) {
-        wp_unschedule_event($timestamp, 'daily_maintenance_check_event');
+    $subject = 'Sitio en Mantenimiento';
+    $message = "¡Atención! El sitio está actualmente en modo mantenimiento.\n\n"
+             . "Sitio: {$site_title}\n"
+             . "URL: {$site_url}\n\n"
+             . "Por favor, revisa que todo esté bien.";
+
+    wp_mail($admin_email, $subject, $message);
+}
+
+// Se dispara en cada visita del front-end
+add_action('wp', function () {
+    if (is_admin() || wp_doing_ajax() || wp_doing_cron()) {
+        return;
     }
+    iw_maybe_send_maintenance_notice();
 });
